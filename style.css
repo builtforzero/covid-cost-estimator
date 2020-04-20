@@ -1,0 +1,18 @@
+/* 
+CS Brand Colors:
+  Dark pink: #a50a51
+  Dark blue: #0494cb
+  Light blue: #12b5ea
+  Dark green: #558920
+  Light green: #86af15
+  Orange: #ff6f0c
+*/
+
+body {
+    font-family: 'Raleway';
+}
+
+h1 {
+    font-weight: 900;
+    color: #a50a51;
+}
