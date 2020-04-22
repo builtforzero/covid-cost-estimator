@@ -10,9 +10,18 @@ CS Brand Colors:
 
 body {
     font-family: 'Raleway';
+    display: grid;
+    grid-template-columns: 1.5fr 3fr;
+    column-gap: 2em;
+    padding: 5px;
 }
 
 h1 {
     font-weight: 900;
     color: #a50a51;
+}
+
+#col1, #col2 {
+  background-color: rgb(236, 236, 236);
+  padding: 15px;
 }

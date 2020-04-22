@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Covid-19 Cost Estimator | Built for Zero</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,900;1,400;1,900&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Covid-19 Cost Estimator | Built for Zero</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,900;1,400;1,900&display=swap"
+        rel="stylesheet">
+</head>
 
-    <body>
-        <h1>COVID-19 COST ESTIMATOR TOOL</h1>
-        <p>This is a tool to estimate costs.</p>
+<body>
+
+    <div id="col1">
         
-        <h2>Quarantine & Isolation Bed Assumptions</h2>
-        <form name="submitToGoogleSheet">
-            <p>Community Name: <select name="Community">
-                <option value="Albuquerque CoC">Albuquerque CoC</option>
-                <option value="Anchorage CoC">Anchorage CoC</option>
-                <option value="Arlington County CoC">Arlington County CoC</option>
-            </select>
-            <p>I would like to model costs for <input name="Months" type="number"> months.</p>
-            <button type="submit">Go!</button>
-        </form>
-    
-        <script>
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzB4VKR9uSm83s0CFHUaMBUV611o4d24-NmQIfPFIhqFOh10qw/exec'
-            const form = document.forms['submitToGoogleSheet']
-            form.addEventListener('submit', e => {
-                e.preventDefault()
-                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        <div id="infobox">
+            <h1>COVID-19 COST ESTIMATOR TOOL</h1>
+            <p>This is a tool to estimate costs.</p>
+        </div>
+
+        <div id="model">
+            <h2>Quarantine & Isolation Bed Assumptions</h2>
+            <form name="submitToGoogleSheet">
+                <p>Community Name: <select name="Community">
+                        <option value="Albuquerque CoC">Albuquerque CoC</option>
+                        <option value="Anchorage CoC">Anchorage CoC</option>
+                        <option value="Arlington County CoC">Arlington County CoC</option>
+                    </select>
+                    <p>I would like to model costs for <input name="Months" type="number"> months.</p>
+                    <button type="submit">Go!</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="col2">
+        <p>CHART GOES HERE</p>
+    </div>
+
+    <script>
+        const scriptURL =
+            'https://script.google.com/macros/s/AKfycbzB4VKR9uSm83s0CFHUaMBUV611o4d24-NmQIfPFIhqFOh10qw/exec'
+        const form = document.forms['submitToGoogleSheet']
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
                 .then(response => console.log('Success!', response))
                 .catch(error => console.error('Error!', error.message))
-                })
-        </script>
+        })
+    </script>
 
-        
-        <script src="main.js"></script>
-    </body>
+
+    <script src="main.js"></script>
+</body>
 
 </html>
