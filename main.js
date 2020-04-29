@@ -6,11 +6,11 @@ let state = {
   community: null,
   email: null,
   homelessNumber: 20, // Number of people experiencing homelessness to model
-  costPerBedQI: 10, // Cost per bed for Q&I
-  costPerBedPP: 5, // Cost per bed for Permanent Placement
+  costPerBedQI: 68.5, // Cost per bed for Q&I
+  costPerBedPP: 128, // Cost per year for Permanent Placement
   percentQI: 0.75, // Percent of beds that will be Q&I
   percentPP: 0.25, // Percent of beds that will be Permanent Placement
-  percentInfected: 0.5, // Percent infected by COVID-19
+  percentInfected: 0.4, // Percent infected by COVID-19
   // Calculated values
   bedsTotal: 0, // Total beds needed
   bedsQI: 0, // Number of Q&I beds needed
@@ -46,7 +46,7 @@ function recalculate() {
     bedsPP: (state.homelessNumber * state.percentInfected) * state.percentPP,
     costQI: ((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI,
     costPP: ((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP,
-    costTotal: (((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI) + (((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP)
+    costTotal: Math.round((((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI) + (((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP), 2)
   })
   console.log("Recalculated State", state)
 }
@@ -65,6 +65,8 @@ const selectCommunity = d3
         community: this.value,
       })
       recalculate();
+      d3.select("#community-topline")
+          .text(this.value)
     })
 
 const homelessInput = d3
@@ -76,6 +78,10 @@ const homelessInput = d3
           homelessNumber: +this.value,
         })
         recalculate();
+        d3.select("#homeless-topline")
+          .text(this.value)
+        d3.select("#costTotal-topline")
+          .text('$' + state.costTotal)
       })
 
 
