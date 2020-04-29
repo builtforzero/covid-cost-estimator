@@ -6,29 +6,37 @@
     <title>Covid-19 Cost Estimator | Built for Zero</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Google Fonts: Raleway -->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,900;1,400;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div id="col1">
-        
+
         <div id="infobox">
             <h1>COVID-19 COST ESTIMATOR TOOL</h1>
             <p>This is a tool to estimate costs.</p>
         </div>
 
         <div id="model">
-            <h2>Quarantine & Isolation Bed Assumptions</h2>
+            <h2>Assumptions</h2>
             <form name="submitToGoogleSheet">
-                <p>Community Name: <select name="Community">
+                <p>Community Name:
+
+                    <select name="Community">
                         <option value="Albuquerque CoC">Albuquerque CoC</option>
                         <option value="Anchorage CoC">Anchorage CoC</option>
                         <option value="Arlington County CoC">Arlington County CoC</option>
                     </select>
+
                     <p>I would like to model costs for <input name="Months" type="number"> months.</p>
+
                     <button type="submit">Go!</button>
             </form>
         </div>
@@ -38,23 +46,23 @@
         <p>CHART GOES HERE</p>
     </div>
 
-    <script>
-        const scriptURL =
-            'https://script.google.com/macros/s/AKfycbzB4VKR9uSm83s0CFHUaMBUV611o4d24-NmQIfPFIhqFOh10qw/exec'
-        const form = document.forms['submitToGoogleSheet']
-        form.addEventListener('submit', e => {
-            e.preventDefault()
-            fetch(scriptURL, {
-                    method: 'POST',
-                    body: new FormData(form)
-                })
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message))
-        })
+    <!-- D3 script -->
+    <script src="../lib/d3.js"></script>
+
+    <!-- Bootstrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
+    <!-- Main JS script -->
+    <script type="module" src="./main.js"></script>
 
-    <script src="main.js"></script>
 </body>
 
 </html>
