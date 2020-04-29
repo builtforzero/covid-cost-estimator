@@ -76,10 +76,13 @@ function app() {
     .on("change",
       function () {
         console.log("The new selected community is", this.value)
+        // Update the global state
         setGlobalState({
           community: this.value,
         })
+        // Recalculate state values
         recalculate();
+        // Update the topline number
         d3.select("#community-topline")
           .text(this.value)
       })
@@ -90,10 +93,13 @@ function app() {
     .on("change",
       function () {
         console.log("The new selected number of homeless individuals are", this.value)
+        // Update the global state
         setGlobalState({
           homelessNumber: +this.value,
         })
+        // Recalculate state values
         recalculate();
+        // Update the topline number
         d3.select("#homeless-topline")
           .text(this.value)
         d3.select("#costTotal-topline")
