@@ -29,9 +29,9 @@ const form = document.forms['submitToGoogleSheet']
 d3.csv("./data/communityData.csv", d3.autoType).then(
   data => {
     console.log("Community data loaded!")
-    state.communityData = d3.map(data, d => d.communityName).keys().sort();
-    state.communityData.unshift(["Select a Community"])
-    app();
+    state.communityData = d3.map(data, d => d.communityName).keys().sort(); // pulls out community names
+    state.communityData.unshift(["Select a Community"]) // adds this value to the top of the list
+    app(); // call the app function
   }
 )
 
@@ -45,28 +45,25 @@ function setGlobalState(nextState) {
   }
 };
 
+// Function to recalculate state values
+function recalculate() {
+  setGlobalState({
+    bedsTotal: state.homelessNumber * state.percentInfected,
+    bedsQI: (state.homelessNumber * state.percentInfected) * state.percentQI,
+    bedsPP: (state.homelessNumber * state.percentInfected) * state.percentPP,
+    costQI: ((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI,
+    costPP: ((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP,
+    costTotal: Math.round((((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI) + (((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP), 2)
+  })
+  console.log("Recalculated State", state)
+}
+
 
 function app() {
-  
-  // Recalculate values from form inputs
-  function recalculate() {
-    setGlobalState({
-      bedsTotal: state.homelessNumber * state.percentInfected,
-      bedsQI: (state.homelessNumber * state.percentInfected) * state.percentQI,
-      bedsPP: (state.homelessNumber * state.percentInfected) * state.percentPP,
-      costQI: ((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI,
-      costPP: ((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP,
-      costTotal: Math.round((((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI) + (((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP), 2)
-    })
-    console.log("Recalculated State", state)
-  }
 
   recalculate();
 
-
-  // FORM FIELDS
-
-  // Populate the community dropdown with values from the CSV file
+  // Populate the community dropdown field with values from the CSV file
   const selectCommunity = d3
     .select("#community-dropdown")
     .selectAll("option")
