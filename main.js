@@ -2,6 +2,7 @@
 
 // Global application state set to default values
 let state = {
+  communityData: {},
   // form inputs
   community: null,
   email: null,
@@ -21,16 +22,22 @@ let state = {
 };
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzB4VKR9uSm83s0CFHUaMBUV611o4d24-NmQIfPFIhqFOh10qw/exec'
-
 const form = document.forms['submitToGoogleSheet']
+
+// Load the list of communities from a CSV file. This takes some time, so we wait until it is loaded
+// to call the rest of the app functions
+d3.csv("./data/communityData.csv", d3.autoType).then(
+  data => {
+    console.log("Community data loaded!")
+    state.communityData = d3.map(data, d => d.communityName).keys().sort();
+    state.communityData.unshift(["Select a Community"])
+    app();
+  }
+)
 
 console.log("Starting State", state)
 
-
-/* UPDATE FUNCTIONS */
-/* Update values and set event listeners */
-
-// Utility function to update the global state (can be used in event listeners)
+// Utility function to update state variables - can be used in event listeners
 function setGlobalState(nextState) {
   state = {
     ...state,
@@ -38,38 +45,52 @@ function setGlobalState(nextState) {
   }
 };
 
-// Calculate values from form inputs
-function recalculate() {
-  setGlobalState({
-    bedsTotal: state.homelessNumber * state.percentInfected,
-    bedsQI: (state.homelessNumber * state.percentInfected) * state.percentQI,
-    bedsPP: (state.homelessNumber * state.percentInfected) * state.percentPP,
-    costQI: ((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI,
-    costPP: ((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP,
-    costTotal: Math.round((((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI) + (((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP), 2)
-  })
-  console.log("Recalculated State", state)
-}
 
-recalculate();
-
-
-// Event listeners on form fields
-
-const selectCommunity = d3
-  .select("#community-dropdown")
-  .on("change",
-    function () {
-      console.log("The new selected community is", this.value)
-      setGlobalState({
-        community: this.value,
-      })
-      recalculate();
-      d3.select("#community-topline")
-          .text(this.value)
+function app() {
+  
+  // Recalculate values from form inputs
+  function recalculate() {
+    setGlobalState({
+      bedsTotal: state.homelessNumber * state.percentInfected,
+      bedsQI: (state.homelessNumber * state.percentInfected) * state.percentQI,
+      bedsPP: (state.homelessNumber * state.percentInfected) * state.percentPP,
+      costQI: ((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI,
+      costPP: ((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP,
+      costTotal: Math.round((((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI) + (((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP), 2)
     })
+    console.log("Recalculated State", state)
+  }
 
-const homelessInput = d3
+  recalculate();
+
+
+  // FORM FIELDS
+
+  // Populate the community dropdown with values from the CSV file
+  const selectCommunity = d3
+    .select("#community-dropdown")
+    .selectAll("option")
+    .data(state.communityData)
+    .join("option")
+    .attr("value", d => d)
+    .text(d => d)
+
+  // Add an event listener to the community dropdown
+  selectCommunity = d3
+    .select("#community-dropdown")
+    .on("change",
+      function () {
+        console.log("The new selected community is", this.value)
+        setGlobalState({
+          community: this.value,
+        })
+        recalculate();
+        d3.select("#community-topline")
+          .text(this.value)
+      })
+
+  // Event listener for homeless individual input
+  const homelessInput = d3
     .select("#homeless-input")
     .on("change",
       function () {
@@ -86,25 +107,20 @@ const homelessInput = d3
 
 
 
+  // Submit form data to Google Sheets. Takes script URL and form object as arguments
+  function submitData(scriptURL, form) {
+    form.addEventListener('submit', e => {
+      console.log("Submitting Data!")
+      e.preventDefault()
+      fetch(scriptURL, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  }
 
-/* DISPLAY & SUBMIT FUNCTIONS */
-/* Display values */
+  submitData(scriptURL, form);
 
-// Select display divs. Append state values
-
-
-// Submit form data to Google Sheets. Takes script URL and form object as arguments
-function submitData(scriptURL, form) {
-  form.addEventListener('submit', e => {
-    console.log("Submitting Data!")
-    e.preventDefault()
-    fetch(scriptURL, {
-        method: 'POST',
-        body: new FormData(form)
-      })
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  })
 }
-
-submitData(scriptURL, form);

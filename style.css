@@ -37,3 +37,7 @@ h1 {
 .topline-label {
   font-weight: 900;
 }
+
+#community-dropdown {
+  width: 300px;
+}
