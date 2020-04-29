@@ -62,7 +62,7 @@ function app() {
   recalculate();
 
   // Populate the community dropdown field with values from the CSV file
-  const selectCommunity = d3
+  let selectCommunity = d3
     .select("#community-dropdown")
     .selectAll("option")
     .data(state.communityData)
