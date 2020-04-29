@@ -1,11 +1,10 @@
 /* VARIABLES */
 
-// Application state set to default values
+// Global application state set to default values
 let state = {
-  // Community information
+  // form inputs
   community: null,
   email: null,
-  // Form inputs
   homelessNumber: 20, // Number of people experiencing homelessness to model
   costPerBedQI: 10, // Cost per bed for Q&I
   costPerBedPP: 5, // Cost per bed for Permanent Placement
@@ -54,9 +53,30 @@ function recalculate() {
 
 recalculate();
 
-// Add event listeners to each form input
 
+// Event listeners on form fields
 
+const selectCommunity = d3
+  .select("#community-dropdown")
+  .on("change",
+    function () {
+      console.log("The new selected community is", this.value)
+      setGlobalState({
+        community: this.value,
+      })
+      recalculate();
+    })
+
+const homelessInput = d3
+    .select("#homeless-input")
+    .on("change",
+      function () {
+        console.log("The new selected number of homeless individuals are", this.value)
+        setGlobalState({
+          homelessNumber: +this.value,
+        })
+        recalculate();
+      })
 
 
 
