@@ -21,9 +21,6 @@ let state = {
   costTotal: 0 // Overall total cost
 };
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzB4VKR9uSm83s0CFHUaMBUV611o4d24-NmQIfPFIhqFOh10qw/exec'
-const form = document.forms['submitToGoogleSheet']
-
 // Load the list of communities from a CSV file. This takes some time, so we wait until it is loaded
 // to call the rest of the app functions
 d3.csv("./data/communityData.csv", d3.autoType).then(
@@ -35,7 +32,7 @@ d3.csv("./data/communityData.csv", d3.autoType).then(
   }
 )
 
-console.log("Starting State", state)
+console.log("Starting State", state) // check the starting state values
 
 // Utility function to update state variables - can be used in event listeners
 function setGlobalState(nextState) {
@@ -59,6 +56,7 @@ function recalculate() {
 }
 
 
+// Function to populate the form values, set event listeners, and submit data to Google Sheets
 function app() {
 
   recalculate();
@@ -105,6 +103,9 @@ function app() {
 
 
   // Submit form data to Google Sheets. Takes script URL and form object as arguments
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzB4VKR9uSm83s0CFHUaMBUV611o4d24-NmQIfPFIhqFOh10qw/exec'
+  const form = document.forms['submitToGoogleSheet']
+
   function submitData(scriptURL, form) {
     form.addEventListener('submit', e => {
       console.log("Submitting Data!")
