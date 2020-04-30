@@ -92,7 +92,7 @@ function app() {
     .select("#homeless-input")
     .on("change",
       function () {
-        console.log("The new selected number of homeless individuals are", this.value)
+        console.log("The new selected number of homeless individuals is", this.value)
         // Update the global state
         setGlobalState({
           homelessNumber: +this.value,
@@ -106,6 +106,10 @@ function app() {
           .text('$' + state.costTotal)
       })
 
+
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
 
 
   // Submit form data to Google Sheets. Takes script URL and form object as arguments

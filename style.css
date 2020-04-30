@@ -11,24 +11,65 @@ CS Brand Colors:
 body {
     font-family: 'Raleway';
     display: grid;
-    grid-template-columns: 1.5fr 3fr;
-    column-gap: 2em;
-    padding: 5px;
+    grid-template-columns: 1;
+    grid-template-rows: 1.5fr 3fr;
+    row-gap: 2em;
+    padding: 25px 100px;
+    max-width: 75rem;
+}
+
+#form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 4em;
+  column-gap: 6em;
+  padding: 0px 0px 15px 0px
+}
+
+#results {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 2em;
+  column-gap: 2em;
+  justify-content: center;
 }
 
 h1 {
-    font-weight: 900;
+    font-weight: 800;
     color: #a50a51;
 }
 
-#col1, #col2 {
-  background-color: rgb(236, 236, 236);
-  padding: 15px;
+h2 {
+  font-weight: 800;
 }
 
 #model {
-  padding: 25px 0px;
+  padding: 25px;
+  background-color: #a50a51;
 }
+
+label {
+  font-weight: 900;
+  margin: 0;
+}
+
+.dropdown, .input {
+    max-width: 200px;
+    height: 35px;
+    padding: 5px;
+    border: 2px solid white;
+}
+
+.dropdown:hover {
+  cursor: pointer;
+}
+
+.helptext {
+  font-size: 11px;
+  color: #ffa1cb;
+  margin: 10px 0px;
+}
+
 
 .topline {
   padding: 25px 0px;
@@ -38,6 +79,30 @@ h1 {
   font-weight: 900;
 }
 
-#community-dropdown {
-  width: 300px;
+button {
+  width: 250px;
+  padding: 5px;
+  margin: 20px 0px;
+  color: #a50a51;
+  background-color: white;
+  border: 2px solid #a50a51;
 }
+
+button:hover {
+  background-color: #a50a51;
+  color: white;
+  cursor: pointer;
+}
+
+.topline-value {
+  font-size: 22px;
+  font-weight: 900;
+  background-color: rgb(236, 235, 235);
+  padding: 15px;
+  min-height: 56px;
+  height: 1.1;
+  width: 0.8;
+  color: #a50a51;
+}
+
+
