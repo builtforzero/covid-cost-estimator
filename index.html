@@ -32,32 +32,71 @@
                     <div>
                         <label for="dropdown" style="color: white">COMMUNITY</label>
                         <div class="helptext">Select your Community or CoC.</div>
-                        <select class="dropdown" id="community-dropdown" name="Community"></select>
+                        <select class="dropdown" name="Community" id="community-dropdown"></select>
+                    </div>
+
+                    <div>
+                        <label for="input" style="color: white">MONTHS</label>
+                        <div class="helptext">How many months would you like to model costs for?</div>
+                        <input class="input" name="Months" type="number" value="3" id="months-input">
                     </div>
 
                     <div>
                         <label for="input" style="color: white">HOMELESS INDIVIDUALS</label>
                         <div class="helptext">At least how many individuals are experiencing homelessness in your community?</div>
-                        <input class="input" name="individuals" type="number" value="300" id="homeless-input">
+                        <input class="input" name="Actively Homeless Number" type="number" value="300" id="homeless-input">
+                    </div>
+
+                    <div>
+                        <label for="dropdown" style="color: white">POPULATION</label>
+                        <div class="helptext">Select the target population.</div>
+                        <select class="dropdown" name="Population" id="population-dropdown">
+                            <option>All individuals</option>
+                            <option>Chronically homeless individuals</option>
+                            <option>50+ year old individuals</option>
+                        </select>
                     </div>
 
                     <div>
                         <label for="input" style="color: white">PERCENT INFECTED</label>
                         <div class="helptext">What percent of individuals experiencing homeless could be infected with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn research, we're estimating <b>40%</b> of the population will be infected at peak. </div>
-                        <span style="color: white"><input class="input" step="any" type="number" id="percentInfected-input" value="40">&nbsp %</span>
+                        <span style="color: white"><input class="input" name="Percent Infected" step="any" type="number" id="percentInfected-input" value="40">&nbsp %</span>
+
+                    </div>
+
+                    <div></div>
+
+                    <div>
+                        <label for="input" style="color: white">PERCENT QUARANTINE & ISOLATION</label>
+                        <div class="helptext">What percent of individuals experiencing homeless could be infected with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn research, we're estimating <b>40%</b> of the population will be infected at peak. </div>
+                        <span style="color: white"><input class="input" name="Percent Q&I" step="any" type="number" id="percentQI-input" value="40">&nbsp %</span>
 
                     </div>
 
                     <div>
                         <label for="input" style="color: white">COST PER QUARANTINE & ISOLATION BED</label>
                         <div class="helptext">What is the cost to </div>
-                        <span style="color: white">$ &nbsp<input class="input" step="any" type="number" id="costPerBedQI-input"></span>
+                        <span style="color: white">$ &nbsp<input class="input" name="Cost per Q&I Bed" step="any" type="number" id="costPerBedQI-input"></span>
+                    </div>
+
+                    <div>
+                        <label for="input" style="color: white">PERCENT PERMANENT PLACEMENT</label>
+                        <div class="helptext">What percent of individuals experiencing homeless could be infected with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn research, we're estimating <b>40%</b> of the population will be infected at peak. </div>
+                        <span style="color: white"><input class="input" name="Percent PP" step="any" type="number" id="percentPP-input" value="40">&nbsp %</span>
+
+                    </div>
+
+                    <div>
+                        <label for="input" style="color: white">COST PER PERMANENT PLACEMENT BED</label>
+                        <div class="helptext">What is the cost to </div>
+                        <span style="color: white">$ &nbsp<input class="input" name="Cost per PP Bed" step="any" type="number" id="costPerBedPP-input"></span>
                     </div>
 
                 </div>
+                <button type="submit">Go!</button>  <!-- Button needs to go inside the form in order for the script to trigger - ET-->
             </form>
         </div>
-        <button type="submit">Go!</button>
+        
         <hr style="height:2px; border-width:0;background-color:rgb(221, 221, 221)">
     </div>
 
