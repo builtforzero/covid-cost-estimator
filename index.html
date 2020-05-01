@@ -14,41 +14,43 @@
 
 <body>
 
-    <div id="body-wrapper">
+    <div id="title-wrapper">
         <div id="title">
-            <h1 style="color: #a50a51; font-size: 25px;">COVID-19</h1>
-            <h1 style="font-size: 35px;">COST ESTIMATOR TOOL</h1>
-            <div id="description-col-1">
-                <p>The Built for Zero team, in partnership with Kaiser Permanente</b>, has created a <i>Cost Estimator Tool</i> to support your strategic response to COVID-19. Enter assumptions in the fields below, and press GO!.
+            <h1 style="color: #a50a51; font-size: 25px; line-height: 0px;">COVID-19</h1>
+            <h1 style="font-size: 35px; line-height: 32px;">COST ESTIMATOR TOOL</h1>
+            <div id="title-text">
+                <p>The Built for Zero team, in partnership with Kaiser Permanente</b>, has created a <i>Cost Estimator
+                        Tool</i> to support your strategic response to COVID-19. Enter your assumptions in the fields
+                    below, and press GO!.
                 </p>
             </div>
         </div>
 
         <div id="description">
-            <div id="description-col-1">
-                <p>Use this tool to estimate of the need and cost for:
-                    <ul>
-                        <li> Quarantine and Isolation (Q&I) units in the crisis response phase;</li>
-                        <li>Prioritized permanent housing placements for a high risk cohort before a potential second
-                            wave of infection in the fall/winter.</li>
-                </p>
+            <p>Use this tool to estimate of the need and cost for:
+                <ul>
+                    <li> Quarantine and Isolation (Q&I) units in the crisis response phase;</li>
+                    <li>Prioritized permanent housing placements for a high risk cohort before a potential second
+                        wave of infection in the fall/winter.</li>
+            </p>
                 </ul>
-            </div>
-            <div id="description-col-2">
-                <p>The tool gives options to estimate need and cost of Q&I units / permanent housing placements for:
-                    <ul>
-                        <li>All individuals experiencing homelessness</li>
-                        <li>Individuals 50+ years of age</li>
-                        <li>Individuals experiencing chronic homelessness.</li>
-                    </ul>
-                </p>
-            </div>
+            <p>The tool gives options to estimate need and cost of Q&I units / permanent housing placements for:
+                <ul>
+                    <li>All individuals experiencing homelessness</li>
+                    <li>Individuals 50+ years of age</li>
+                    <li>Individuals experiencing chronic homelessness.</li>
+                </ul>
+            </p>
         </div>
+    </div>
 
+    <hr style="margin: 0px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
+
+    <div id="body-wrapper">
         <div id="col1">
 
             <div id="model">
-                <h2 style="color: white">ASSUMPTIONS</h2>
+                <h2 style="color: #faaace">ASSUMPTIONS</h2>
                 <br>
                 <form name="submitToGoogleSheet" id="form-input">
                     <div id="form-wrapper">
@@ -120,23 +122,20 @@
             <h2>RESULTS</h2>
             <div id="results">
                 <div class="topline">
-                    <div style="display: inline-flex;">
-                        <div class="topline-label">COMMUNITY</div>
-                    </div>
+                    <div class="topline-label">COMMUNITY</div>
+                    <div class="helptext-results">How many months would you like to model costs for?</div>
                     <div class="topline-value" id="community-topline"></div>
                 </div>
 
                 <div class="topline">
-                    <div style="display: inline-flex;">
-                        <div class="topline-label">HOMELESS INDIVIDUALS</div>
-                    </div>
+                    <div class="topline-label">HOMELESS INDIVIDUALS</div>
+                    <div class="helptext-results">How many months would you like to model costs for?</div>
                     <div class="topline-value" id="homeless-topline"></div>
                 </div>
 
                 <div class="topline">
-                    <div style="display: inline-flex;">
-                        <div class="topline-label">TOTAL COST</div>
-                    </div>
+                    <div class="topline-label">TOTAL COST</div>
+                    <div class="helptext-results">How many months would you like to model costs for?</div>
                     <div class="topline-value" id="costTotal-topline"></div>
                 </div>
             </div>
