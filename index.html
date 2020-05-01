@@ -9,147 +9,132 @@
     <!-- Google Fonts: Raleway -->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,900;1,400;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div id="col1">
-
-        <div id="infobox">
-            <h1>COVID-19 COST ESTIMATOR TOOL</h1>
-            <p>This is a tool to estimate costs.</p>
+    <div id="body-wrapper">
+        <div id="title">
+            <h1 style="color: #a50a51; font-size: 25px;">COVID-19</h1>
+            <h1 style="font-size: 35px;">COST ESTIMATOR TOOL</h1>
         </div>
 
-        <div id="model">
-            <h2 style="color: white">Assumptions</h2>
-            <br>
-            <form name="submitToGoogleSheet" id="form-input">
-                <div id="form-wrapper">
+        <div id="description">
+            <p>The Built for Zero team has created a Cost Estimator Tool to support your strategic response to COVID-19.
+                Use this tool to estimate of the need and cost for:
+                Quarantine and Isolation (Q&I) units in the crisis response phase;
+                Prioritized permanent housing placements for a high risk cohort before a potential second wave of
+                infection in the fall/winter. The tool gives two options to estimate need and cost of:
+                Permanent housing placements for individuals 50+ years of age; and
+                Permanent housing placements for individuals experiencing chronic homelessness.</p>
+        </div>
 
-                    <div>
-                        <label for="dropdown" style="color: white">COMMUNITY</label>
-                        <div class="helptext">Select your Community or CoC.</div>
-                        <select class="dropdown" name="Community" id="community-dropdown"></select>
+        <div id="col1">
+
+            <div id="model">
+                <h2 style="color: white">ASSUMPTIONS</h2>
+                <br>
+                <form name="submitToGoogleSheet" id="form-input">
+                    <div id="form-wrapper">
+
+                        <div>
+                            <label for="dropdown" style="color: white">COMMUNITY</label>
+                            <div class="helptext">Select your Community or CoC.</div>
+                        </div>
+                        <div><select class="dropdown" name="Community" id="community-dropdown"></select></div>
+
+                        <div>
+                            <label for="input" style="color: white">MONTHS</label>
+                            <div class="helptext">How many months would you like to model costs for?</div>
+                        </div>
+                        <div><input class="input" name="Months" type="number" value="3" id="months-input"></div>
+
+                        <div>
+                            <label for="input" style="color: white">HOMELESS INDIVIDUALS</label>
+                            <div class="helptext">At least how many individuals are experiencing homelessness in your
+                                community?</div>
+                        </div>
+                        <div><input class="input" name="Actively Homeless Number" type="number" value="300"
+                                id="homeless-input"><br>
+                            <select class="dropdown" name="Population" id="population-dropdown">
+                                <option>All individuals</option>
+                                <option>Chronically homeless individuals</option>
+                                <option>50+ year old individuals</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="input" style="color: white">PERCENT INFECTED</label>
+                            <div class="helptext">What percent of individuals experiencing homeless could be infected
+                                with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn
+                                research, we're estimating <b>40%</b> of the population will be infected at peak. </div>
+                        </div>
+                        <div><span style="color: white"><input class="input" name="Percent Infected" step="any"
+                                    type="number" id="percentInfected-input" value="40">&nbsp %</span></div>
+
+                        <div>
+                            <label for="input" style="color: white">COST PER QUARANTINE & ISOLATION BED</label>
+                            <div class="helptext">What percent of individuals experiencing homeless could be infected
+                                with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn
+                                research, we're estimating <b>40%</b> of the population will be infected at peak.</div>
+                        </div>
+                        <div><span style="color: white">$ &nbsp<input class="input" name="Cost per Q&I Bed" step="any"
+                                    type="number" id="costPerBedQI-input"></span></div>
+
+                        <div>
+                            <label for="input" style="color: white">COST PER PERMANENT PLACEMENT BED</label>
+                            <div class="helptext">What percent of individuals experiencing homeless could be infected
+                                with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn
+                                research, we're estimating <b>40%</b> of the population will be infected at peak.</div>
+                        </div>
+                        <div><span style="color: white">$ &nbsp<input class="input" name="Cost per PP Bed" step="any"
+                                    type="number" id="costPerBedPP-input"></span></div>
+
                     </div>
-
-                    <div>
-                        <label for="input" style="color: white">MONTHS</label>
-                        <div class="helptext">How many months would you like to model costs for?</div>
-                        <input class="input" name="Months" type="number" value="3" id="months-input">
+                    <div id="button-wrapper">
+                        <button type="submit">GO!</button>
                     </div>
+                    <!-- Button needs to go inside the form in order for the script to trigger - ET-->
+                </form>
+            </div>
+        </div>
 
-                    <div>
-                        <label for="input" style="color: white">HOMELESS INDIVIDUALS</label>
-                        <div class="helptext">At least how many individuals are experiencing homelessness in your community?</div>
-                        <input class="input" name="Actively Homeless Number" type="number" value="300" id="homeless-input">
+        <div id="col2">
+            <h2>RESULTS</h2>
+            <div id="results">
+                <div class="topline">
+                    <div style="display: inline-flex;">
+                        <div class="topline-label">COMMUNITY</div>
                     </div>
-
-                    <div>
-                        <label for="dropdown" style="color: white">POPULATION</label>
-                        <div class="helptext">Select the target population.</div>
-                        <select class="dropdown" name="Population" id="population-dropdown">
-                            <option>All individuals</option>
-                            <option>Chronically homeless individuals</option>
-                            <option>50+ year old individuals</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="input" style="color: white">PERCENT INFECTED</label>
-                        <div class="helptext">What percent of individuals experiencing homeless could be infected with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn research, we're estimating <b>40%</b> of the population will be infected at peak. </div>
-                        <span style="color: white"><input class="input" name="Percent Infected" step="any" type="number" id="percentInfected-input" value="40">&nbsp %</span>
-
-                    </div>
-
-                    <div></div>
-
-                    <div>
-                        <label for="input" style="color: white">PERCENT QUARANTINE & ISOLATION</label>
-                        <div class="helptext">What percent of individuals experiencing homeless could be infected with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn research, we're estimating <b>40%</b> of the population will be infected at peak. </div>
-                        <span style="color: white"><input class="input" name="Percent Q&I" step="any" type="number" id="percentQI-input" value="40">&nbsp %</span>
-
-                    </div>
-
-                    <div>
-                        <label for="input" style="color: white">COST PER QUARANTINE & ISOLATION BED</label>
-                        <div class="helptext">What is the cost to </div>
-                        <span style="color: white">$ &nbsp<input class="input" name="Cost per Q&I Bed" step="any" type="number" id="costPerBedQI-input"></span>
-                    </div>
-
-                    <div>
-                        <label for="input" style="color: white">PERCENT PERMANENT PLACEMENT</label>
-                        <div class="helptext">What percent of individuals experiencing homeless could be infected with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn research, we're estimating <b>40%</b> of the population will be infected at peak. </div>
-                        <span style="color: white"><input class="input" name="Percent PP" step="any" type="number" id="percentPP-input" value="40">&nbsp %</span>
-
-                    </div>
-
-                    <div>
-                        <label for="input" style="color: white">COST PER PERMANENT PLACEMENT BED</label>
-                        <div class="helptext">What is the cost to </div>
-                        <span style="color: white">$ &nbsp<input class="input" name="Cost per PP Bed" step="any" type="number" id="costPerBedPP-input"></span>
-                    </div>
-
+                    <div class="topline-value" id="community-topline"></div>
                 </div>
-                <button type="submit">Go!</button>  <!-- Button needs to go inside the form in order for the script to trigger - ET-->
-            </form>
+
+                <div class="topline">
+                    <div style="display: inline-flex;">
+                        <div class="topline-label">HOMELESS INDIVIDUALS</div>
+                    </div>
+                    <div class="topline-value" id="homeless-topline"></div>
+                </div>
+
+                <div class="topline">
+                    <div style="display: inline-flex;">
+                        <div class="topline-label">TOTAL COST</div>
+                    </div>
+                    <div class="topline-value" id="costTotal-topline"></div>
+                </div>
+            </div>
         </div>
-        
-        <hr style="height:2px; border-width:0;background-color:rgb(221, 221, 221)">
     </div>
 
-    <div id="col2">
-        <h2>Results</h2>
-        <div id="results">
-            <div class="topline">
-                <div style="display: inline-flex;">
-                    <div class="topline-label">COMMUNITY</div>
-                    <div data-toggle="tooltip" data-placement="top" title="Some tooltip text!">
-                        <p style="color: grey;">&nbsp&#9432&nbsp</p>
-                    </div>
-                </div>
-                <div class="topline-value" id="community-topline"></div>
-            </div>
+    <hr style="margin: 30px 0px 5px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
 
-            <div class="topline">
-                <div style="display: inline-flex;">
-                    <div class="topline-label">HOMELESS INDIVIDUALS</div>
-                    <div data-toggle="tooltip" data-placement="top" title="Some tooltip text!">
-                        <p style="color: grey;">&nbsp&#9432&nbsp</p>
-                    </div>
-                </div>
-                <div class="topline-value" id="homeless-topline"></div>
-            </div>
-
-            <div class="topline">
-                <div style="display: inline-flex;">
-                    <div class="topline-label">TOTAL COST</div>
-                    <div data-toggle="tooltip" data-placement="top"
-                        title="The total cost of Q&I and permanent placement beds">
-                        <p style="color: grey;">&nbsp&#9432&nbsp</p>
-                    </div>
-                </div>
-                <div class="topline-value" id="costTotal-topline"></div>
-            </div>
-        </div>
-
+    <div id="footer">
+        Made by Built for Zero
     </div>
 
     <!-- D3 script -->
     <script src="./lib/d3.js"></script>
-
-    <!-- Bootstrap scripts -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
 
     <!-- Main JS script -->
     <script type="module" src="./main.js"></script>
