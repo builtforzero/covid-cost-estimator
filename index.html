@@ -66,14 +66,14 @@
                             <label for="input" style="color: white">MONTHS</label>
                             <div class="helptext">How many months would you like to model costs for?</div>
                         </div>
-                        <div><input class="input" name="Months" type="number" value="3" id="months-input"></div>
+                        <div><input class="input" name="Months" type="number" value="3" min="1" id="months-input"></div>
 
                         <div>
                             <label for="input" style="color: white">HOMELESS INDIVIDUALS</label>
                             <div class="helptext">At least how many individuals are experiencing homelessness in your
                                 community?</div>
                         </div>
-                        <div><input class="input" name="Actively Homeless Number" type="number" value="100"
+                        <div><input class="input" name="Actively Homeless Number" type="number" min="1" value="100"
                                 id="homeless-input"><br>
                             <select class="dropdown" name="Population" id="population-dropdown"
                                 value="Select a population">
@@ -91,10 +91,10 @@
                                 research, we're estimating <b>40%</b> of the population will be infected at peak. </div>
                         </div>
                         <div><span style="color: white"><input class="input" name="Percent Infected" step="any"
-                                    type="number" id="percentInfected-input" value="40">&nbsp %</span></div>
+                                    type="number" min="1" id="percentInfected-input" value="40">&nbsp %</span></div>
 
                         <div>
-                            <label for="input" style="color: white">COST PER QUARANTINE & ISOLATION BED</label>
+                            <label for="input" style="color: white">COST PER NIGHT FOR QUARANTINE & ISOLATION</label>
                             <div class="helptext">How much does it cost, per person, per night, to run a Quarantine &
                                 Isolation Shelter? Nationally, based on UPenn
                                 research, we're estimating <b>$68.50</b> a night.</div>
@@ -103,10 +103,10 @@
                                     type="number" id="costPerBedQI-input" value="68.50"></span></div>
 
                         <div>
-                            <label for="input" style="color: white">COST PER PERMANENT PLACEMENT BED</label>
+                            <label for="input" style="color: white">COST PER YEAR FOR PERMANENT PLACEMENT</label>
                             <div class="helptext">How much does it cost per year to place (subsidy + services) an
                                 individual in permanent supportive housing? Nationally, based on NAEH
-                                estimates, we're estimating <b>$12,800</b> of the population will be infected at peak.
+                                estimates, we're estimating <b>$12,800</b>.
                             </div>
                         </div>
                         <div><span style="color: white">$ &nbsp<input class="input" name="Cost per PP Bed" step="any"
@@ -116,7 +116,9 @@
                     <div id="button-wrapper">
                         <button type="submit" id="submit-button">GO!</button>
                     </div>
-                    
+                    <div class="warning-text"></div>
+                    <div class="submit-text"></div>
+
                 </form>
             </div>
         </div>
@@ -129,7 +131,7 @@
 
                     <div class="topline">
                         <div>
-                            <p style="font-size: 12px; color: #636467;">FOR FOR THIS COMMUNITY</p>
+                            <p style="font-size: 12px; color: #636467;">FOR THIS COMMUNITY</p>
                         </div>
                         <div id="community-topline"></div>
                     </div>
@@ -148,6 +150,13 @@
                         <div id="months-topline"></div>
                     </div>
 
+                    <div class="topline">
+                        <div>
+                            <p style="font-size: 12px; color: #636467;">AT THIS INFECTION LEVEL</p>
+                        </div>
+                        <div id="infected-topline"></div>
+                    </div>
+
                 </div>
 
                 <hr style="margin: 15px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
@@ -155,10 +164,9 @@
                 <div id="results-beds">
                     <div class="topline">
                         <div class="topline-label">TOTAL BEDS NEEDED</div>
-                        <div class="helptext-results">The total number of beds you need to provide. Calculated as
-                            <i>Number of Individuals Experiencing Homelessness × Percent Infected</i></div>
+                        <div class="helptext-results">The total number of beds you need to provide. Calculated as Number of Individuals Experiencing Homelessness × Percent Infected × Number of Months</div>
                     </div>
-                    <div id="bedsTotal-topline"></div>
+                    <div class="topline-value" id="bedsTotal-topline"></div>
                 </div>
 
                 <hr style="margin: 15px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
@@ -166,9 +174,8 @@
                 <div id="results-qi">
 
                     <div class="topline">
-                        <div class="topline-label">COST OF Q&I UNITS</div>
-                        <div class="helptext-results">If you were to only provide quarantine and isolation units for the
-                            beds you need, how much would it cost?</div>
+                        <div class="topline-label">TOTAL COST OF Q&I UNITS</div>
+                        <div class="helptext-results">If you were to only provide quarantine and isolation units for the beds you need, how much would it cost?</div>
                         <div class="topline-value" id="costQI-topline"></div>
                     </div>
                 </div>
@@ -177,10 +184,8 @@
 
                 <div id="results-pp">
                     <div class="topline">
-                        <div class="topline-label">COST OF PERMANENT SUPPORTIVE HOUSING UNITS</div>
-                        <div class="helptext-results">If you were to only provide permanent supportive housing units for
-                            the
-                            beds you need, how much would it cost?</div>
+                        <div class="topline-label">TOTAL COST OF PERMANENT SUPPORTIVE HOUSING UNITS</div>
+                        <div class="helptext-results">If you were to only provide permanent supportive housing units for the beds you need, how much would it cost?</div>
                         <div class="topline-value" id="costPP-topline"></div>
                     </div>
                 </div>

@@ -4,15 +4,12 @@
 let state = {
   communityData: {},
   // form inputs
-  community: null,
-  population: null,
-  months: 0,
-  email: null,
-  homelessNumber: 20, // Number of people experiencing homelessness to model
-  costPerBedQI: 68.5, // Cost per bed for Q&I
-  costPerBedPP: 128, // Cost per year for Permanent Placement
-  percentQI: 0.75, // Percent of beds that will be Q&I
-  percentPP: 0.25, // Percent of beds that will be Permanent Placement
+  community: "Select a Community",
+  population: "Select a population",
+  months: 3,
+  homelessNumber: 100, // Number of people experiencing homelessness to model
+  costPerBedQI: 68.50, // Cost per night for Q&I
+  costPerBedPP: 12800, // Cost per night for Permanent Placement
   percentInfected: 0.4, // Percent infected by COVID-19
   // Calculated values
   bedsTotal: 0, // Total beds needed
@@ -44,24 +41,40 @@ function setGlobalState(nextState) {
   }
 };
 
-// Function to recalculate state values
+// Recalculate state values
 function recalculate() {
   setGlobalState({
-    bedsTotal: state.homelessNumber * state.percentInfected,
-    bedsQI: (state.homelessNumber * state.percentInfected) * state.percentQI,
-    bedsPP: (state.homelessNumber * state.percentInfected) * state.percentPP,
-    costQI: ((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI,
-    costPP: ((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP,
-    costTotal: Math.round((((state.homelessNumber * state.percentInfected) * state.percentQI) * state.costPerBedQI) + (((state.homelessNumber * state.percentInfected) * state.percentPP) * state.costPerBedPP), 2)
+    bedsTotal: (state.homelessNumber * state.percentInfected),
+    bedsQI: ((state.homelessNumber * state.percentInfected)) * state.months,
+    bedsPP: ((state.homelessNumber * state.percentInfected)) * state.months,
+    costQI: (((state.homelessNumber * state.percentInfected)) * state.costPerBedQI) * state.months,
+    costPP: ((state.homelessNumber * state.percentInfected) * (state.costPerBedPP / 365)) * state.months
   })
   console.log("Recalculated State", state)
+}
+
+// Check whether community and population are selected. If not, disable the submit button
+function buttonState() {
+  if (state.community === "Select a Community" || state.population === "Select a population") {
+    d3.select("#submit-button")
+      .attr("disabled", "true")
+      .attr("style", "background-color: rgb(211, 211, 211); border: 2px solid rgb(211, 211, 211); color: white;")
+    d3.select(".warning-text")
+      .text("Please select a community and population to continue.")
+  } else if (state.community != "Select a Community" && state.population != "Select a population") {
+    d3.select("#submit-button")
+      .attr("disabled", null)
+      .attr("style", "")
+    d3.select(".warning-text")
+      .text("")
+  }
 }
 
 
 // Function to populate the form values, set event listeners, and submit data to Google Sheets
 function app() {
 
-  recalculate();
+  buttonState();
 
   // Populate the community dropdown field with values from the CSV file
   let selectCommunity = d3
@@ -72,7 +85,7 @@ function app() {
     .attr("value", d => d)
     .text(d => d)
 
-  // Add an event listener to the community dropdown
+  // Event listener on the community dropdown
   selectCommunity = d3
     .select("#community-dropdown")
     .on("change",
@@ -82,9 +95,10 @@ function app() {
           community: this.value,
         })
         recalculate();
+        buttonState();
       })
 
-  // Event listener for homeless individual input
+  // Event listener on homeless individual input
   const homelessInput = d3
     .select("#homeless-input")
     .on("change",
@@ -96,45 +110,88 @@ function app() {
         recalculate();
       })
 
-  // Add an event listener to the population dropdown
-    const populationInput = d3
-      .select("#population-dropdown")
-      .on("change",
-        function () {
-          console.log("The new selected population is", this.value)
-          setGlobalState({
-            population: this.value,
-          })
-          recalculate();
+  // Event listener on the population dropdown
+  const populationInput = d3
+    .select("#population-dropdown")
+    .on("change",
+      function () {
+        console.log("The new selected population is", this.value)
+        setGlobalState({
+          population: this.value,
         })
-
-    const MonthsInput = d3
-        .select("#months-input")
-        .on("change",
-          function () {
-            console.log("The new selected time is", this.value, " months")
-            setGlobalState({
-              months: +this.value,
-            })
-            recalculate();
-          })
-  
-
-  const submitButton = d3
-      .select("#submit-button")
-      .on("click", function() {
-        console.log("clicked button")
-        d3.select("#community-topline")
-          .text(state.community)
-        d3.select("#population-topline")
-          .text(state.homelessNumber + " " + state.population.toLowerCase())
-        d3.select("#months-topline")
-          .text(state.months + " months")
-        d3.select("#homeless-topline")
-          .text(state.homelessNumber)
-        d3.select("#bedsTotal-topline")
-          .text(Math.round(state.bedsTotal) + " beds")
+        recalculate();
+        buttonState();
       })
+
+  // Event listener on the months input
+  const MonthsInput = d3
+    .select("#months-input")
+    .on("change",
+      function () {
+        console.log("The new selected time is", this.value, " months")
+        setGlobalState({
+          months: +this.value,
+        })
+        recalculate();
+      })
+
+  // Event listener on the percent infected input
+  const InfectedInput = d3
+    .select("#percentInfected-input")
+    .on("change",
+      function () {
+        console.log("The new selected infected percentage is", this.value)
+        setGlobalState({
+          percentInfected: +this.value / 100,
+        })
+        recalculate();
+      })
+
+  // Event listener on the QI Cost input
+  const QICostInput = d3
+    .select("#costPerBedQI-input")
+    .on("change",
+      function () {
+        console.log("The new QI cost is", this.value)
+        setGlobalState({
+          costPerBedQI: +this.value,
+        })
+        recalculate();
+      })
+
+  // Event listener on the PP Cost input
+  const PPCostInput = d3
+    .select("#costPerBedPP-input")
+    .on("change",
+      function () {
+        console.log("The new PP cost is", this.value)
+        setGlobalState({
+          costPerBedPP: +this.value,
+        })
+        recalculate();
+      })
+
+  // Event listener on the submit button to populate results
+  const submitButton = d3
+    .select("#submit-button")
+    .on("click", function () {
+      recalculate();
+      console.log("clicked button")
+      d3.select("#community-topline")
+        .text(state.community)
+      d3.select("#population-topline")
+        .text(state.homelessNumber + " " + state.population.toLowerCase())
+      d3.select("#months-topline")
+        .text(state.months + " months")
+      d3.select("#infected-topline")
+        .text(state.percentInfected * 100 + "%")
+      d3.select("#bedsTotal-topline")
+        .text(Math.round(state.bedsTotal) + " beds")
+      d3.select("#costQI-topline")
+        .text("$" + Math.round(state.costQI, 2))
+      d3.select("#costPP-topline")
+        .text("$" + Math.round(state.costPP, 2))
+    })
 
 
   // Submit form data to Google Sheets. Takes script URL and form object as arguments
