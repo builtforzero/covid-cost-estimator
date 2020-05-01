@@ -33,7 +33,7 @@
                     <li>Prioritized permanent housing placements for a high risk cohort before a potential second
                         wave of infection in the fall/winter.</li>
             </p>
-                </ul>
+            </ul>
             <p>The tool gives options to estimate need and cost of Q&I units / permanent housing placements for:
                 <ul>
                     <li>All individuals experiencing homelessness</li>
@@ -59,7 +59,8 @@
                             <label for="dropdown" style="color: white">COMMUNITY</label>
                             <div class="helptext">Select your Community or CoC.</div>
                         </div>
-                        <div><select class="dropdown" name="Community" id="community-dropdown"></select></div>
+                        <div><select class="dropdown" name="Community" id="community-dropdown"
+                                value="Select a Community"></select></div>
 
                         <div>
                             <label for="input" style="color: white">MONTHS</label>
@@ -74,10 +75,12 @@
                         </div>
                         <div><input class="input" name="Actively Homeless Number" type="number" value="100"
                                 id="homeless-input"><br>
-                            <select class="dropdown" name="Population" id="population-dropdown">
-                                <option>All individuals</option>
+                            <select class="dropdown" name="Population" id="population-dropdown"
+                                value="Select a population">
+                                <option>Select a population</option>
+                                <option>Individuals (All)</option>
                                 <option>Chronically homeless individuals</option>
-                                <option>50+ year old individuals</option>
+                                <option>Individuals 50+ years old</option>
                             </select>
                         </div>
 
@@ -111,33 +114,77 @@
 
                     </div>
                     <div id="button-wrapper">
-                        <button type="submit">GO!</button>
+                        <button type="submit" id="submit-button">GO!</button>
                     </div>
-                    <!-- Button needs to go inside the form in order for the script to trigger - ET-->
+                    
                 </form>
             </div>
         </div>
 
         <div id="col2">
-            <h2>RESULTS</h2>
+            <h2>ESTIMATED COST REPORT</h2>
             <div id="results">
-                <div class="topline">
-                    <div class="topline-label">COMMUNITY</div>
-                    <div class="helptext-results">How many months would you like to model costs for?</div>
-                    <div class="topline-value" id="community-topline"></div>
+
+                <div id="results-information">
+
+                    <div class="topline">
+                        <div>
+                            <p style="font-size: 12px; color: #636467;">FOR FOR THIS COMMUNITY</p>
+                        </div>
+                        <div id="community-topline"></div>
+                    </div>
+
+                    <div class="topline">
+                        <div>
+                            <p style="font-size: 12px; color: #636467;">FOR THIS POPULATION</p>
+                        </div>
+                        <div id="population-topline"></div>
+                    </div>
+
+                    <div class="topline">
+                        <div>
+                            <p style="font-size: 12px; color: #636467;">FOR THIS LENGTH OF TIME</p>
+                        </div>
+                        <div id="months-topline"></div>
+                    </div>
+
                 </div>
 
-                <div class="topline">
-                    <div class="topline-label">HOMELESS INDIVIDUALS</div>
-                    <div class="helptext-results">How many months would you like to model costs for?</div>
-                    <div class="topline-value" id="homeless-topline"></div>
+                <hr style="margin: 15px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
+
+                <div id="results-beds">
+                    <div class="topline">
+                        <div class="topline-label">TOTAL BEDS NEEDED</div>
+                        <div class="helptext-results">The total number of beds you need to provide. Calculated as
+                            <i>Number of Individuals Experiencing Homelessness × Percent Infected</i></div>
+                    </div>
+                    <div id="bedsTotal-topline"></div>
                 </div>
 
-                <div class="topline">
-                    <div class="topline-label">TOTAL COST</div>
-                    <div class="helptext-results">How many months would you like to model costs for?</div>
-                    <div class="topline-value" id="costTotal-topline"></div>
+                <hr style="margin: 15px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
+
+                <div id="results-qi">
+
+                    <div class="topline">
+                        <div class="topline-label">COST OF Q&I UNITS</div>
+                        <div class="helptext-results">If you were to only provide quarantine and isolation units for the
+                            beds you need, how much would it cost?</div>
+                        <div class="topline-value" id="costQI-topline"></div>
+                    </div>
                 </div>
+
+                <hr style="margin: 15px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
+
+                <div id="results-pp">
+                    <div class="topline">
+                        <div class="topline-label">COST OF PERMANENT SUPPORTIVE HOUSING UNITS</div>
+                        <div class="helptext-results">If you were to only provide permanent supportive housing units for
+                            the
+                            beds you need, how much would it cost?</div>
+                        <div class="topline-value" id="costPP-topline"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

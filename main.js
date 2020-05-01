@@ -5,6 +5,8 @@ let state = {
   communityData: {},
   // form inputs
   community: null,
+  population: null,
+  months: 0,
   email: null,
   homelessNumber: 20, // Number of people experiencing homelessness to model
   costPerBedQI: 68.5, // Cost per bed for Q&I
@@ -76,15 +78,10 @@ function app() {
     .on("change",
       function () {
         console.log("The new selected community is", this.value)
-        // Update the global state
         setGlobalState({
           community: this.value,
         })
-        // Recalculate state values
         recalculate();
-        // Update the topline number
-        d3.select("#community-topline")
-          .text(this.value)
       })
 
   // Event listener for homeless individual input
@@ -93,17 +90,50 @@ function app() {
     .on("change",
       function () {
         console.log("The new selected number of homeless individuals is", this.value)
-        // Update the global state
         setGlobalState({
           homelessNumber: +this.value,
         })
-        // Recalculate state values
         recalculate();
-        // Update the topline number
+      })
+
+  // Add an event listener to the population dropdown
+    const populationInput = d3
+      .select("#population-dropdown")
+      .on("change",
+        function () {
+          console.log("The new selected population is", this.value)
+          setGlobalState({
+            population: this.value,
+          })
+          recalculate();
+        })
+
+    const MonthsInput = d3
+        .select("#months-input")
+        .on("change",
+          function () {
+            console.log("The new selected time is", this.value, " months")
+            setGlobalState({
+              months: +this.value,
+            })
+            recalculate();
+          })
+  
+
+  const submitButton = d3
+      .select("#submit-button")
+      .on("click", function() {
+        console.log("clicked button")
+        d3.select("#community-topline")
+          .text(state.community)
+        d3.select("#population-topline")
+          .text(state.homelessNumber + " " + state.population.toLowerCase())
+        d3.select("#months-topline")
+          .text(state.months + " months")
         d3.select("#homeless-topline")
-          .text(this.value)
-        d3.select("#costTotal-topline")
-          .text('$' + state.costTotal)
+          .text(state.homelessNumber)
+        d3.select("#bedsTotal-topline")
+          .text(Math.round(state.bedsTotal) + " beds")
       })
 
 
