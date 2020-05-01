@@ -192,6 +192,7 @@ and (max-width: 667px) {
   }
 
   #title-wrapper {
+    padding: 2% 5% 5% 5%;
     display: grid;
     grid-template-columns: 1fr;
     column-gap: 2em;
