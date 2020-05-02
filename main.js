@@ -80,9 +80,9 @@ function buttonState() {
 
 // Function to populate the form values, set event listeners, and submit data to Google Sheets
 function app() {
-  buttonState();
+  buttonState(); // Check button state
 
-  // Format numbers with commas (e.g. formatNumber(1000) = 1,000)
+  // Format numbers with commas (syntax: formatNumber(1000) = 1,000)
   let formatNumber = d3.format(",")
 
   // Populate the community dropdown field with values from the CSV file
@@ -103,6 +103,16 @@ function app() {
     recalculate();
     buttonState();
   });
+
+  // Event listener on the months input
+  const MonthsInput = d3.select("#months-input").on("change", function () {
+    console.log("The new selected time is", this.value, " months");
+    setGlobalState({
+      months: +this.value,
+    });
+    recalculate();
+  });
+
 
   // Event listener on homeless individual input
   const homelessInput = d3.select("#homeless-input").on("change", function () {
@@ -127,15 +137,6 @@ function app() {
       recalculate();
       buttonState();
     });
-
-  // Event listener on the months input
-  const MonthsInput = d3.select("#months-input").on("change", function () {
-    console.log("The new selected time is", this.value, " months");
-    setGlobalState({
-      months: +this.value,
-    });
-    recalculate();
-  });
 
   // Event listener on the percent infected input
   const InfectedInput = d3
