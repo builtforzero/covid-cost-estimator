@@ -20,28 +20,32 @@
             <h1 style="font-size: 35px; line-height: 32px;">COST ESTIMATOR TOOL</h1>
             <div id="title-text">
                 <p>The Built for Zero team, in partnership with Kaiser Permanente</b>, has created a <i>Cost Estimator
-                        Tool</i> to support your strategic response to COVID-19. Enter your assumptions in the fields
-                    below, and press GO!.
+                        Tool</i> to support your strategic response to COVID-19.
                 </p>
             </div>
         </div>
 
         <div id="description">
-            <p>Use this tool to estimate of the need and cost for:
-                <ul>
-                    <li> Quarantine and Isolation (Q&I) units in the crisis response phase;</li>
-                    <li>Prioritized permanent housing placements for a high risk cohort before a potential second
-                        wave of infection in the fall/winter.</li>
-            </p>
-            </ul>
-            <p>The tool gives options to estimate need and cost of Q&I units / permanent housing placements for:
-                <ul>
-                    <li>All individuals experiencing homelessness</li>
-                    <li>Individuals 50+ years of age</li>
-                    <li>Individuals experiencing chronic homelessness.</li>
+            <div>
+                <p>Use this tool to estimate of the need and cost for:
+                    <ul>
+                        <li> Quarantine and Isolation (Q&I) units in the crisis response phase;</li>
+                        <li>Prioritized permanent housing placements for a high risk cohort before a potential second
+                            wave of infection in the fall/winter.</li>
+                </p>
                 </ul>
-            </p>
+            </div>
+            <div>
+                <p>For the following populations:
+                    <ul>
+                        <li>All individuals experiencing homelessness</li>
+                        <li>Individuals 50+ years of age</li>
+                        <li>Individuals experiencing chronic homelessness.</li>
+                    </ul>
+                </p>
+            </div>
         </div>
+
     </div>
 
     <hr style="margin: 0px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
@@ -51,6 +55,9 @@
 
             <div id="model">
                 <h2 style="color: #faaace">ASSUMPTIONS</h2>
+                <p class="helptext">Enter your <i>best guess</i> for the values below and press the GO! button. Upon
+                    submission, your assumption data will be anonymously pulled into a national tracker so we can better
+                    report out trends across communities. If you have questions, please contact XX@XX!</p>
                 <br>
                 <form name="submitToGoogleSheet" id="form-input">
                     <div id="form-wrapper">
@@ -97,10 +104,10 @@
                             <label for="input" style="color: white">COST PER NIGHT FOR QUARANTINE & ISOLATION</label>
                             <div class="helptext">How much does it cost, per person, per night, to run a Quarantine &
                                 Isolation Shelter? Nationally, based on UPenn
-                                research, we're estimating <b>$68.50</b> a night.</div>
+                                research, we're estimating <b>$100.00</b> a night.</div>
                         </div>
                         <div><span style="color: white">$ &nbsp<input class="input" name="Cost per Q&I Bed" step="any"
-                                    type="number" id="costPerBedQI-input" value="68.50"></span></div>
+                                    type="number" id="costPerBedQI-input" value="100"></span></div>
 
                         <div>
                             <label for="input" style="color: white">COST PER YEAR FOR PERMANENT PLACEMENT</label>
@@ -116,7 +123,6 @@
                     <div id="button-wrapper">
                         <button type="submit" id="submit-button">GO!</button>
                         <div class="warning-text"></div>
-                    <div class="submit-text"></div>
                     </div>
 
                 </form>
@@ -125,34 +131,35 @@
 
         <div id="col2">
             <h2>ESTIMATED COST REPORT</h2>
+
             <div id="results">
 
                 <div id="results-information">
 
                     <div class="topline">
                         <div>
-                            <p style="font-size: 12px; color: #636467;">FOR THIS COMMUNITY</p>
+                            <p style="font-size: 12px; color: #636467;">COMMUNITY</p>
                         </div>
                         <div id="community-topline"></div>
                     </div>
 
                     <div class="topline">
                         <div>
-                            <p style="font-size: 12px; color: #636467;">FOR THIS POPULATION</p>
+                            <p style="font-size: 12px; color: #636467;">POPULATION</p>
                         </div>
                         <div id="population-topline"></div>
                     </div>
 
                     <div class="topline">
                         <div>
-                            <p style="font-size: 12px; color: #636467;">FOR THIS LENGTH OF TIME</p>
+                            <p style="font-size: 12px; color: #636467;">LENGTH OF TIME</p>
                         </div>
                         <div id="months-topline"></div>
                     </div>
 
                     <div class="topline">
                         <div>
-                            <p style="font-size: 12px; color: #636467;">AT THIS INFECTION LEVEL</p>
+                            <p style="font-size: 12px; color: #636467;">INFECTION LEVEL</p>
                         </div>
                         <div id="infected-topline"></div>
                     </div>
@@ -164,7 +171,8 @@
                 <div id="results-beds">
                     <div class="topline">
                         <div class="topline-label">TOTAL BEDS NEEDED</div>
-                        <div class="helptext-results">The total number of beds you need to provide. Calculated as Number of Individuals Experiencing Homelessness × Percent Infected × Number of Months</div>
+                        <div class="helptext-results">The total number of beds you need to provide.</div>
+                        <div class="helptext-calc" id="beds-calc"></div>
                     </div>
                     <div class="topline-value" id="bedsTotal-topline"></div>
                 </div>
@@ -172,12 +180,13 @@
                 <hr style="margin: 15px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
 
                 <div id="results-qi">
-
                     <div class="topline">
                         <div class="topline-label">TOTAL COST OF Q&I UNITS</div>
-                        <div class="helptext-results">If you were to only provide quarantine and isolation units for the beds you need, how much would it cost?</div>
-                        <div class="topline-value" id="costQI-topline"></div>
+                        <div class="helptext-results">If you were to only provide quarantine and isolation units for the
+                            beds you need, how much would it cost?</div>
+                        <div class="helptext-calc" id="costQI-calc"></div>
                     </div>
+                    <div class="topline-value" id="costQI-topline"></div>
                 </div>
 
                 <hr style="margin: 15px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
@@ -185,9 +194,11 @@
                 <div id="results-pp">
                     <div class="topline">
                         <div class="topline-label">TOTAL COST OF PERMANENT SUPPORTIVE HOUSING UNITS</div>
-                        <div class="helptext-results">If you were to only provide permanent supportive housing units for the beds you need, how much would it cost?</div>
-                        <div class="topline-value" id="costPP-topline"></div>
+                        <div class="helptext-results">If you were to only provide permanent supportive housing units for
+                            the beds you need, how much would it cost?</div>
+                        <div class="helptext-calc" id="costPP-calc"></div>
                     </div>
+                    <div class="topline-value" id="costPP-topline"></div>
                 </div>
 
             </div>

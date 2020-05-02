@@ -10,12 +10,12 @@ CS Brand Colors:
 */
 
 body {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   margin: 1% 5% 5% 2%;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 800;
 }
 
@@ -42,10 +42,10 @@ h2 {
 }
 
 #body-wrapper {
+  margin: 50px 0px 50px 0px;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  row-gap: 1em;
-  column-gap: 1em;
+  column-gap: 2em;
 }
 
 #form-wrapper {
@@ -55,13 +55,6 @@ h2 {
   column-gap: 1.5em;
   padding: 0px 0px 25px 0px;
 }
-
-/* #results {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 2.5em;
-  justify-content: center;
-} */
 
 #results-information {
   display: grid;
@@ -117,7 +110,7 @@ label {
   width: 90%;
   padding: 10px;
   border: 2px solid #a50a51;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-weight: 900;
   font-size: 16px;
 }
@@ -126,7 +119,7 @@ label {
   width: 55%;
   padding: 10px;
   border: 2px solid #a50a51;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-weight: 900;
   font-size: 16px;
 }
@@ -144,14 +137,13 @@ label {
   border: 2px solid #ffd2e6;
 }
 
-
 button {
   width: 60%;
   padding: 5px;
   color: white;
   background-color: #a50a51;
   border: 2px solid white;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-size: 20px;
   font-weight: 900;
 }
@@ -163,7 +155,7 @@ button:hover {
 }
 
 .topline {
-  padding: 25px 0px;
+  padding: 20px 0px;
 }
 
 .topline-label {
@@ -174,6 +166,12 @@ button:hover {
 }
 
 .helptext-results {
+  padding: 0px 0px 10px 0px;
+  color: #636467;
+}
+
+.helptext-calc {
+  font-size: 12px;
   padding: 0px 0px 10px 0px;
   color: #636467;
 }
@@ -193,14 +191,20 @@ button:hover {
   background-color: rgb(236, 235, 235);
 }
 
-#community-topline, #population-topline, #months-topline, #infected-topline {
+#community-topline,
+#population-topline,
+#months-topline,
+#infected-topline {
   font-size: 18px;
   background-color: rgb(236, 235, 235);
   height: 1.1;
   width: 0.8;
 }
 
-#community-topline:hover, #population-topline:hover, #months-topline:hover, #infected-topline:hover {
+#community-topline:hover,
+#population-topline:hover,
+#months-topline:hover,
+#infected-topline:hover {
   color: #a50a51;
 }
 
@@ -209,15 +213,16 @@ button:hover {
 }
 
 .warning-text {
-  text-align: center;
+  text-align: left;
   padding: 15px;
   font-size: 12px;
   color: white;
 }
 
 
-@media only screen
-and (max-width: 667px) {
+
+
+@media only screen and (max-width: 667px) {
   #body-wrapper {
     margin: 5%;
     display: grid;
@@ -241,7 +246,7 @@ and (max-width: 667px) {
     position: static;
     background-color: white;
   }
-  
+
   #description {
     font-size: 12px;
     margin: 5px;
@@ -253,28 +258,36 @@ and (max-width: 667px) {
   #title {
     margin: 5px;
   }
-  
+
   #title-text {
     font-size: 12px;
   }
 
-  .input, .dropdown {
+  .input,
+  .dropdown {
     margin: 0px 0px 35px 0px;
   }
 
   #results-information {
-    display: static;
+    /* display: static; */
+    grid-template-columns: 1fr;
     justify-content: center;
   }
-  
+
+  #results-beds {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
   #results-qi {
-    display: static;
+    /* display: static; */
+    grid-template-columns: 1fr;
     justify-content: center;
   }
-  
+
   #results-pp {
-    display: static;
+    /* display: static; */
+    grid-template-columns: 1fr;
     justify-content: center;
   }
-  
 }
