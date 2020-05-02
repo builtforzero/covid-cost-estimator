@@ -7,7 +7,7 @@ let state = {
   community: "Select a Community",
   population: "Select a population",
   months: 3,
-  homelessNumber: 100, // Number of people experiencing homelessness to model
+  homelessNumber: 1000, // Number of people experiencing homelessness to model
   costPerBedQI: 100, // Cost per night for Q&I
   costPerBedPP: 12800, // Cost per night for Permanent Placement
   percentInfected: 0.4, // Percent infected by COVID-19
