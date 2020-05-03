@@ -85,7 +85,7 @@ h2 {
 }
 
 #col2 {
-  background-color: rgb(236, 235, 235);
+  background-color: white;
   padding: 0px 25px;
 }
 
@@ -188,7 +188,7 @@ button:hover {
   justify-content: left;
   font-weight: 800;
   font-size: 35px;
-  background-color: rgb(236, 235, 235);
+  background-color: white;;
   padding: 0px 0px 20px 0px;
 }
 
@@ -197,7 +197,7 @@ button:hover {
 #months-topline,
 #infected-topline {
   font-size: 18px;
-  background-color: rgb(236, 235, 235);
+  background-color: white;;
   height: 1.1;
   width: 0.8;
 }
@@ -223,7 +223,7 @@ button:hover {
 
 
 
-@media only screen and (max-width: 667px) {
+@media only screen and (max-width: 500px) {
   #body-wrapper {
     margin: 5%;
     display: grid;
