@@ -223,7 +223,7 @@ button:hover {
 
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 750px) {
   #body-wrapper {
     margin: 5%;
     display: grid;
