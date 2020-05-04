@@ -42,7 +42,7 @@ h2 {
 }
 
 #body-wrapper {
-  margin: 50px 0px 50px 0px;
+  margin: 15px 0px 50px 0px;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   column-gap: 2em;
@@ -236,12 +236,11 @@ button:hover {
 
 @media only screen and (max-width: 750px) {
   #body-wrapper {
-    margin: 5%;
+    margin: 1%;
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 2em;
   }
-
+/* 
   #title-wrapper {
     padding: 2% 5% 5% 5%;
     display: grid;
@@ -249,7 +248,7 @@ button:hover {
     column-gap: 2em;
     position: static;
     background-color: white;
-  }
+  } */
 
   #description {
     font-size: 12px;
@@ -275,23 +274,19 @@ button:hover {
   #results-information {
     /* display: static; */
     grid-template-columns: 1fr;
-    justify-content: center;
   }
 
   #results-beds {
     grid-template-columns: 1fr;
-    justify-content: center;
   }
 
   #results-qi {
     /* display: static; */
     grid-template-columns: 1fr;
-    justify-content: center;
   }
 
   #results-pp {
     /* display: static; */
     grid-template-columns: 1fr;
-    justify-content: center;
   }
 }
