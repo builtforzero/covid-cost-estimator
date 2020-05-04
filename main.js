@@ -1,9 +1,16 @@
-/* VARIABLES */
+/* VARIABLES & CONSTANTS */
 
-// Global application state set to default values
+// Global application state
 let state = {
+  // Data
   communityData: {},
-  // form inputs
+  communityNames: {},
+  filteredData: {},
+  suggestedInd: 1000,
+  suggestedChr: 1000,
+  suggested50: 400,
+
+  // Form inputs set to default values
   community: "Select a Community",
   population: "Select a population",
   months: 3,
@@ -11,6 +18,7 @@ let state = {
   costPerBedQI: 100, // Cost per night for Q&I
   costPerBedPP: 12800, // Cost per night for Permanent Placement
   percentInfected: 0.4, // Percent infected by COVID-19
+
   // Calculated values
   bedsTotal: 0, // Total beds needed
   bedsQI: 0, // Number of Q&I beds needed
@@ -20,21 +28,38 @@ let state = {
   costTotal: 0, // Overall total cost
 };
 
-// Load the list of communities from a CSV file. This takes some time, so we wait until it is loaded
-// to call the rest of the app functions
-d3.csv("./data/communityData.csv", d3.autoType).then((data) => {
-  console.log("Community data loaded!");
-  state.communityData = d3
-    .map(data, (d) => d.communityName)
-    .keys()
-    .sort(); // pulls out community names
-  state.communityData.unshift(["Select a Community"]); // adds this value to the top of the list
-  app(); // call the app function
-});
+// Format large numbers with commas
+const format = d3.format(",.0");
+
+// Variables for script to submit data to Google Sheets
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbzB4VKR9uSm83s0CFHUaMBUV611o4d24-NmQIfPFIhqFOh10qw/exec";
+const form = document.forms["submitToGoogleSheet"];
+
+
+
+/* DATA SOURCE */
+
+// Load data and call the app function when complete
+d3.csv("data/communityData.csv", d3.autoType).then(
+  data => {
+    console.log("Community data loaded!");
+    // All data
+    state.communityData = data;
+    // Community name data for dropdown
+    state.communityNames = d3.map(data, d => d.communityName).keys().sort();
+    state.communityNames.unshift(["Select a Community"]);
+    // Call the app function
+    app();
+  });
 
 console.log("Starting State", state); // check the starting state values
 
-// Utility function to update state variables - can be used in event listeners
+
+
+/* FUNCTIONS */
+
+// Update global state
 function setGlobalState(nextState) {
   state = {
     ...state,
@@ -42,11 +67,10 @@ function setGlobalState(nextState) {
   };
 }
 
-const format = d3.format(",.0");
-
 // Recalculate state values
 function recalculate() {
   setGlobalState({
+    filteredData: state.communityData.filter(d => d.communityName === state.community),
     bedsTotal: state.homelessNumber * state.percentInfected,
     costQI: (state.homelessNumber * state.percentInfected) * state.costPerBedQI * (state.months * 30),
     costPP: (state.homelessNumber * state.percentInfected) * (state.costPerBedPP / 365) * (state.months * 30),
@@ -78,7 +102,53 @@ function buttonState() {
   }
 }
 
-// Function to populate the form values, set event listeners, and submit data to Google Sheets
+// Submit data to Google Sheets
+function submitData(scriptURL, form) {
+  form.addEventListener("submit", (e) => {
+    console.log("Submitting Data!");
+    e.preventDefault();
+    fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(form),
+      })
+      .then((response) => console.log("Success!", response))
+      .catch((error) => console.error("Error!", error.message));
+  });
+}
+
+function datatext() {
+  if (state.community === "Select a Community" || state.population === "Select a population") {
+    d3.select("#datatext")
+      .text("")
+  } else if (state.community != "Select a Community" && state.population === "Individuals (All)") {
+    setGlobalState({
+      suggestedInd: +d3.map(state.filteredData, d => d.ind2019).keys(),
+      suggestedChr: +d3.map(state.filteredData, d => d.chind2019).keys(),
+      suggested50: +d3.map(state.filteredData, d => Math.round(d.ind2019 * 0.4)).keys(),
+    });
+    d3.select("#datatext")
+      .text("Your 2019 PIT count reported " + state.suggestedInd + " individuals (adults + groups of adults + unaccompanied youth) experiencing homelessness.")
+  } else if (state.community != "Select a Community" && state.population === "Chronically homeless individuals") {
+    setGlobalState({
+      suggestedInd: +d3.map(state.filteredData, d => d.ind2019).keys(),
+      suggestedChr: +d3.map(state.filteredData, d => d.chind2019).keys(),
+      suggested50: +d3.map(state.filteredData, d => Math.round(d.ind2019 * 0.4)).keys(),
+    });
+    d3.select("#datatext")
+      .text("Your 2019 PIT count reported " + state.suggestedChr + " individuals experiencing chronic homelessness. You may want to refer to your BNL.")
+  } else if (state.community != "Select a Community" && state.population === "Individuals 50+ years old") {
+    setGlobalState({
+      suggestedInd: +d3.map(state.filteredData, d => d.ind2019).keys(),
+      suggestedChr: +d3.map(state.filteredData, d => d.chind2019).keys(),
+      suggested50: +d3.map(state.filteredData, d => Math.round(d.ind2019 * 0.4)).keys(),
+    });
+    d3.select("#datatext")
+      .text("Nationally, based on HMIS estimates, we estimate that about 40% of the population is over 50. That number would be " + state.suggested50 + " individuals based on your 2019 PIT count.")
+  }
+}
+
+/* APP */
+
 function app() {
   buttonState(); // Check button state
 
@@ -89,24 +159,23 @@ function app() {
   let selectCommunity = d3
     .select("#community-dropdown")
     .selectAll("option")
-    .data(state.communityData)
+    .data(state.communityNames)
     .join("option")
     .attr("value", (d) => d)
     .text((d) => d);
 
   // Event listener on the community dropdown
   selectCommunity = d3.select("#community-dropdown").on("change", function () {
-    console.log("The new selected community is", this.value);
     setGlobalState({
       community: this.value,
     });
     recalculate();
     buttonState();
+    datatext();
   });
 
   // Event listener on the months input
   const MonthsInput = d3.select("#months-input").on("change", function () {
-    console.log("The new selected time is", this.value, " months");
     setGlobalState({
       months: +this.value,
     });
@@ -133,9 +202,13 @@ function app() {
       console.log("The new selected population is", this.value);
       setGlobalState({
         population: this.value,
+        suggestedInd: +d3.map(state.filteredData, d => d.ind2019).keys(),
+        suggestedChr: +d3.map(state.filteredData, d => d.chind2019).keys(),
+        suggested50: +d3.map(state.filteredData, d => Math.round(d.ind2019 * 0.4)).keys(),
       });
       recalculate();
       buttonState();
+      datatext();
     });
 
   // Event listener on the percent infected input
@@ -171,6 +244,7 @@ function app() {
       recalculate();
     });
 
+
   // Event listener on the submit button to populate results
   const submitButton = d3.select("#submit-button").on("click", function () {
     recalculate();
@@ -186,29 +260,11 @@ function app() {
     d3.select("#costPP-topline").text("$" + formatNumber(Math.round(state.costPP, 2)));
 
     // Populate helptext calculations
-    d3.select("#beds-calc").text(formatNumber(state.homelessNumber) + " individuals × " + state.percentInfected*100 + "% infected at peak");
+    d3.select("#beds-calc").text(formatNumber(state.homelessNumber) + " individuals × " + state.percentInfected * 100 + "% infected at peak");
     d3.select("#costQI-calc").text(formatNumber(Math.round(state.bedsTotal)) + " beds × $" + formatNumber(state.costPerBedQI) + " per night × " + formatNumber((state.months * 30)) + " days");
     d3.select("#costPP-calc").text(formatNumber(Math.round(state.bedsTotal)) + " beds × ( $" + formatNumber(state.costPerBedPP) + " per year / 365 days ) × " + formatNumber((state.months * 30)) + " days");
-
   });
 
-  // Submit form data to Google Sheets. Takes script URL and form object as arguments
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycbzB4VKR9uSm83s0CFHUaMBUV611o4d24-NmQIfPFIhqFOh10qw/exec";
-  const form = document.forms["submitToGoogleSheet"];
-
-  function submitData(scriptURL, form) {
-    form.addEventListener("submit", (e) => {
-      console.log("Submitting Data!");
-      e.preventDefault();
-      fetch(scriptURL, {
-        method: "POST",
-        body: new FormData(form),
-      })
-        .then((response) => console.log("Success!", response))
-        .catch((error) => console.error("Error!", error.message));
-    });
-  }
-
+  // Submit form data to Google Sheets
   submitData(scriptURL, form);
 }

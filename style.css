@@ -109,6 +109,12 @@ label {
   margin: 10px 0px;
 }
 
+#datatext {
+  font-size: 12px;
+  color: #fc9dc7;
+  margin: 10px 0px;
+}
+
 .dropdown {
   width: 90%;
   padding: 10px;

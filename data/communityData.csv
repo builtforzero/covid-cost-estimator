@@ -1,15 +1,15 @@
-communityName,Type,BfZ?,KP?,2019 ALL,2019 IND,2019 Shelt IND,2019 Unsh IND,2019 CHIND
+communityName,Type,BfZ,KP,all2019,ind2019,sheltInd2019,unsheltInd2019,chind2019
 "Akron, Barberton/Summit County CoC",Largely Suburban CoC,,,546,425,338,87,54
 Alabama Balance of State CoC,Largely Rural CoC,,,323,218,89,129,16
 Alaska Balance of State CoC,Largely Rural CoC,,,796,585,416,169,152
 Albany City & County CoC,Largely Suburban CoC,,,750,543,509,34,91
-Albuquerque CoC,Major City CoC,x,,"1,524","1,224",677,547,564
+Albuquerque CoC,Major City CoC,x,,1524,1224,677,547,564
 Alexandria CoC,Other Largely Urban CoC,,,198,124,114,10,38
 Alexandria/Central Louisiana CoC,Largely Rural CoC,,,114,87,68,19,21
 "Alpine, Inyo, Mono Counties CoC",Largely Rural CoC,,,214,198,9,189,79
 "Amador, Calaveras, Mariposa, Tuolumne Counties CoC",Largely Rural CoC,,,845,663,56,607,227
 Amarillo CoC,Other Largely Urban CoC,,,777,627,296,331,265
-Anchorage CoC,Other Largely Urban CoC,x,,"1,111",799,702,97,79
+Anchorage CoC,Other Largely Urban CoC,x,,1111,799,702,97,79
 Annapolis/Anne Arundel County CoC,Largely Suburban CoC,,,302,225,166,59,71
 Appalachian Regional CoC,Largely Rural CoC,,,405,294,156,138,51
 Arizona Balance of State CoC,Largely Rural CoC,,,2021,1575,682,893,515
@@ -17,14 +17,14 @@ Arkansas  Balance of State  CoC,Largely Rural CoC,,,811,736,232,504,169
 Arlington County CoC,Other Largely Urban CoC,x,x,215,149,113,36,74
 Asheville/Buncombe County CoC,Largely Suburban CoC,,,580,539,467,72,121
 Athens-Clarke County CoC,Other Largely Urban CoC,,,237,161,106,55,36
-Atlanta CoC,Major City CoC,x,x,"3,217","2,718","2,001",717,364
+Atlanta CoC,Major City CoC,x,x,3217,2718,2001,717,364
 Atlantic City & County CoC,Largely Suburban CoC,,,357,328,232,96,60
 "Attleboro, Taunton/Bristol County CoC",Largely Suburban CoC,,,256,72,38,34,14
 Augusta-Richmond County CoC,Other Largely Urban CoC,,,384,312,167,145,33
 "Aurora, Elgin/Kane County CoC",Largely Suburban CoC,,,388,335,290,45,126
 Austin/Travis County CoC,Major City CoC,,,2255,1701,628,1073,587
-Bakersfield/Kern County CoC,Other Largely Urban CoC,x,x,"1,330","1,118",348,770,64
-Baltimore City CoC,Major City CoC,x,x,"2,294","1,944","1,573",371,579
+Bakersfield/Kern County CoC,Other Largely Urban CoC,x,x,1330,1118,348,770,64
+Baltimore City CoC,Major City CoC,x,x,2294,1944,1573,371,579
 Baltimore County CoC,Largely Suburban CoC,,,735,438,232,206,141
 Battle Creek/Calhoun County CoC,Other Largely Urban CoC,,,241,162,126,36,31
 Beaver County CoC,Largely Suburban CoC,,,123,52,46,6,0
@@ -55,7 +55,7 @@ Chapel Hill/Orange County CoC,Other Largely Urban CoC,,,131,103,76,27,19
 "Charles, Calvert, St.Mary's Counties CoC",Largely Suburban CoC,,,306,228,132,96,67
 "Charleston/Kanawha, Putnam, Boone, Clay Counties CoC",Largely Suburban CoC,,,293,236,234,2,50
 Charleston/Low Country CoC,Largely Suburban CoC,,,403,351,223,128,86
-Charlotte-Mecklenburg CoC,Major City CoC,x,,"1,742","1,223","1,027",196,235
+Charlotte-Mecklenburg CoC,Major City CoC,x,,1742,1223,1027,196,235
 Charlottesville CoC,Largely Rural CoC,x,,165,143,117,26,30
 Chattanooga/Southeast Tennessee CoC,Largely Rural CoC,x,,463,367,202,165,87
 Chester County CoC,Largely Suburban CoC,x,,528,386,374,12,19
@@ -66,9 +66,9 @@ Cincinnati/Hamilton County CoC,Largely Suburban CoC,,,1082,793,762,31,69
 Clackamas County CoC,Largely Suburban CoC,x,x,471,385,178,207,175
 Cleveland/Cuyahoga County CoC,Largely Suburban CoC,,,1618,1228,1122,106,212
 Clinton County CoC,Largely Rural CoC,,,164,131,130,1,24
-Colorado BoS Fremont County,Largely Rural CoC,x,,"2,302",1783,1085,698,665
+Colorado BoS Fremont County,Largely Rural CoC,x,,2302,1783,1085,698,665
 Colorado BoS Mesa County,Largely Rural CoC,x,,2302,1783,1085,698,665
-Colorado BoS Roaring Fork,Largely Rural CoC,x,,"2,302","1,783","1,085",698,665
+Colorado BoS Roaring Fork,Largely Rural CoC,x,,2302,1783,1085,698,665
 Columbia-Boone County/Missouri Balance of State CoC,Largely Rural CoC,x,,1362,916,603,313,226
 "Columbia, Greene Counties CoC",Largely Rural CoC,,,200,97,93,4,8
 "Columbia, Hamilton, Lafayette, Suwannee Counties CoC",Largely Rural CoC,,,538,454,58,396,41
@@ -90,7 +90,7 @@ DeKalb County CoC,Largely Suburban CoC,,,375,261,64,197,36
 Delaware Statewide CoC,Largely Suburban CoC,,,921,565,489,76,119
 "Deltona, Daytona Beach/Volusia, Flagler Counties CoC",Largely Suburban CoC,,,875,574,103,471,78
 Des Moines/Polk County CoC,Other Largely Urban CoC,,,681,558,466,92,95
-Detroit CoC,Major City CoC,x,,"1,965","1,400","1,314",86,263
+Detroit CoC,Major City CoC,x,,1965,1400,1314,86,263
 District of Columbia CoC,Major City CoC,x,x,6521,3875,3267,608,1374
 Duluth/St.Louis County CoC,Largely Rural CoC,,,519,315,146,169,148
 DuPage County CoC,Largely Suburban CoC,,,309,187,177,10,31
@@ -103,9 +103,9 @@ El Paso City and County CoC,Major City CoC,x,,809,527,344,183,111
 Elizabeth/Union County CoC,Largely Suburban CoC,,,437,240,201,39,58
 "Elmira/Steuben, Allegany, Livingston, Chemung, Schuyler Counties CoC",Largely Rural CoC,,,240,129,122,7,3
 Erie City & County CoC,Largely Suburban CoC,,,356,255,249,6,34
-"Eugene, Springfield/Lane County CoC",Other Largely Urban CoC,x,x,"2,165","1,908",374,"1,534",783
+"Eugene, Springfield/Lane County CoC",Other Largely Urban CoC,x,x,2165,1908,374,1534,783
 Everett/Snohomish County CoC,Largely Suburban CoC,,,1116,779,272,507,405
-Fairfax County CoC,Largely Suburban CoC,x,x,"1,034",508,419,89,213
+Fairfax County CoC,Largely Suburban CoC,x,x,1034,508,419,89,213
 Fall River CoC,Largely Suburban CoC,,,320,66,62,4,36
 Fayetteville/Cumberland County CoC,Other Largely Urban CoC,,,329,222,12,210,122
 Fayetteville/Northwest Arkansas CoC,Other Largely Urban CoC,x,,518,439,223,216,120
@@ -131,7 +131,7 @@ Glendale CoC,Other Largely Urban CoC,,,243,162,30,132,60
 "Gloucester, Haverhill, Salem/Essex County CoC",Largely Suburban CoC,,,760,261,210,51,68
 "Grand Rapids, Wyoming/Kent County CoC",Other Largely Urban CoC,,,759,435,419,16,113
 "Grand Traverse, Antrim, Leelanau Counties CoC",Largely Rural CoC,,,168,122,118,4,38
-Greater Kansas City Coalition to End Homelessness,Major City CoC,x,,"1,979","1,392","1,084",308,305
+Greater Kansas City Coalition to End Homelessness,Major City CoC,x,,1979,1392,1084,308,305
 "Greenville, Anderson, Spartanburg/Upstate CoC",Largely Suburban CoC,,,1401,1086,669,417,305
 Guam CoC,Largely Rural CoC,,,875,258,28,230,26
 Guilford County CoC,Other Largely Urban CoC,x,,586,460,399,61,38
@@ -157,7 +157,7 @@ Ithaca/Tompkins County CoC,Largely Rural CoC,,,171,122,122,0,51
 Jackson City & County CoC,Largely Rural CoC,,,113,90,77,13,7
 "Jackson/Rankin, Madison Counties CoC",Largely Suburban CoC,x,,408,346,240,106,166
 Jackson/West Tennessee CoC,Largely Rural CoC,,,959,514,66,448,51
-"Jacksonville-Duval, Clay Counties CoC",Major City CoC,x,,"1,654","1,365",857,508,285
+"Jacksonville-Duval, Clay Counties CoC",Major City CoC,x,,1654,1365,857,508,285
 "Jamestown, Dunkirk/Chautauqua County CoC",Largely Rural CoC,,,96,55,55,0,2
 "Jefferson, Lewis, St. Lawrence Counties CoC",Largely Rural CoC,,,53,39,35,4,0
 "Jersey City, Bayonne/Hudson County CoC",Largely Suburban CoC,,,890,722,458,264,226
@@ -193,7 +193,7 @@ Madison/Dane County CoC,Other Largely Urban CoC,x,,578,354,279,75,89
 Maine Statewide CoC,Largely Rural CoC,,,2106,1232,1140,92,211
 Manchester CoC,Other Largely Urban CoC,,,461,274,223,51,35
 Marietta/Cobb County CoC,Largely Suburban CoC,,,451,306,190,116,58
-Marin County CoC,Largely Suburban CoC,x,x,"1,034",887,196,691,250
+Marin County CoC,Largely Suburban CoC,x,x,1034,887,196,691,250
 "Marquette, Alger Counties CoC",Largely Rural CoC,,,53,30,30,0,2
 Massachusetts Balance of State CoC,Largely Suburban CoC,,,1918,505,324,181,49
 McHenry County CoC,Largely Suburban CoC,x,,159,93,92,1,16
@@ -201,11 +201,11 @@ McHenry County CoC,Largely Suburban CoC,x,,159,93,92,1,16
 Memphis/Shelby County CoC,Major City CoC,,,1325,761,703,58,74
 Mendocino County CoC,Largely Rural CoC,,,785,681,152,529,118
 Merced City & County CoC,Largely Suburban CoC,,,608,419,144,275,174
-Metro Denver CoC,Major City CoC,x,x,"5,755","4,353","3,425",928,1124
+Metro Denver CoC,Major City CoC,x,x,5755,4353,3425,928,1124
 Miami-Dade County CoC,Major City CoC,,,3472,2312,1304,1008,321
 Michigan Balance of State CoC,Largely Rural CoC,,,1245,624,518,106,57
 Mid-Shore Regional CoC,Largely Rural CoC,,,164,81,63,18,16
-Mid-Willamette Valley Homeless Alliance,Largely Rural CoC,x,x,"7,103","4,728","1,300",3428,1471
+Mid-Willamette Valley Homeless Alliance,Largely Rural CoC,x,x,7103,4728,1300,3428,1471
 Middlesex County CoC/Coming Home,Largely Suburban CoC,x,,620,361,226,135,108
 Milwaukee City & County CoC,Major City CoC,,,885,625,519,106,73
 Minneapolis/Hennepin County CoC,Major City CoC,x,,3400,2057,1457,600,665
@@ -235,7 +235,7 @@ New Hampshire Balance of State CoC,Largely Rural CoC,,,669,409,318,91,139
 New Orleans/Jefferson Parish CoC,Major City CoC,,,1179,1049,619,430,146
 New York Balance of State Continuum of Care,Largely Rural CoC,,,168,76,72,4,14
 New York City CoC,Major City CoC,,,78604,35427,31805,3622,5193
-Newark/Essex County,Largely Suburban CoC,x,,"2,235","1,360","1,035",325,248
+Newark/Essex County,Largely Suburban CoC,x,,2235,1360,1035,325,248
 "Newburgh, Middletown/Orange County CoC",Largely Suburban CoC,,,589,251,200,51,54
 "Newport News, Hampton/Virginia Peninsula CoC",Other Largely Urban CoC,,,427,304,252,52,53
 "Norfolk, Chesapeake, Suffolk/Isle of Wight, Southampton Counties CoC",Largely Suburban CoC,,,700,493,409,84,77
@@ -246,7 +246,7 @@ North Central Oklahoma CoC,Largely Rural CoC,,,178,125,118,7,3
 North Dakota Statewide CoC,Largely Rural CoC,,,557,377,374,3,73
 Northeast Minnesota CoC,Largely Rural CoC,,,90,47,19,28,4
 Northeast Oklahoma CoC,Largely Rural CoC,,,228,123,69,54,21
-Northern Colorado CoC,Largely Rural CoC,x,x,"2,302","1,783","1,085",698,665
+Northern Colorado CoC,Largely Rural CoC,x,x,2302,1783,1085,698,665
 Northern Mariana Islands CoC,Largely Rural CoC,,,1807,423,18,405,22
 Northwest Minnesota CoC,Largely Rural CoC,,,268,124,116,8,27
 Northwest North Carolina CoC,Largely Rural CoC,,,417,217,111,106,17
@@ -292,14 +292,14 @@ Reading/Berks County CoC,Largely Suburban CoC,,,597,455,445,10,35
 Rhode Island Statewide CoC,Largely Suburban CoC,,,1055,730,663,67,176
 Richmond/Contra Costa County CoC,Largely Suburban CoC,x,x,2295,1976,477,1499,454
 "Richmond/Henrico, Chesterfield, Hanover Counties CoC",Largely Suburban CoC,x,,497,382,217,165,74
-Riverside City & County CoC,Largely Suburban CoC,x,x,"2,811","2,522",490,"2,032",786
+Riverside City & County CoC,Largely Suburban CoC,x,x,2811,2522,490,2032,786
 Roanoke City & County/Salem CoC,Largely Suburban CoC,x,,319,244,229,15,56
 "Rochester, Irondequoit, Greece/Monroe County CoC",Largely Suburban CoC,,,849,606,571,35,86
 Rochester/Southeast Minnesota CoC,Largely Rural CoC,,,452,210,168,42,38
 "Rock Island, Moline/Northwestern Illinois CoC",Largely Rural CoC,,,211,137,127,10,2
 "Rockford/Winnebago, Boone Counties CoC",Largely Suburban CoC,x,,403,257,212,45,28
 Rockland County CoC,Largely Suburban CoC,,,182,145,102,43,36
-Sacramento City & County CoC,Major City CoC,x,x,"5,561",4429,1096,3333,1412
+Sacramento City & County CoC,Major City CoC,x,x,5561,4429,1096,3333,1412
 Saginaw City & County CoC,Largely Suburban CoC,,,364,186,174,12,16
 Saint Johns County CoC,Largely Suburban CoC,x,,356,236,52,184,14
 Saint Paul/Ramsey County CoC,Other Largely Urban CoC,,,1579,1002,752,250,376
@@ -335,7 +335,7 @@ Southern Illinois CoC,Largely Rural CoC,,,294,178,134,44,18
 Southwest Minnesota CoC,Largely Rural CoC,,,88,30,24,6,3
 Southwest Oklahoma Regional CoC,Largely Rural CoC,,,158,90,71,19,9
 Spokane City and County CoC,Other Largely Urban CoC,x,,1309,1007,711,296,231
-Springfield CoC,Largely Suburban CoC,x,,"2,443",373,331,42,69
+Springfield CoC,Largely Suburban CoC,x,,2443,373,331,42,69
 "Springfield/Greene, Christian, Webster Counties CoC",Other Largely Urban CoC,,,492,335,254,81,107
 Springfield/Sangamon County CoC,Other Largely Urban CoC,,,284,204,179,25,57
 "St. Charles City & County, Lincoln, Warren Counties CoC",Largely Suburban CoC,,,438,237,143,94,18
@@ -359,7 +359,7 @@ Toledo/Lucas County CoC,Other Largely Urban CoC,,,611,361,349,12,48
 Topeka/Shawnee County CoC,Other Largely Urban CoC,,,441,329,264,65,158
 Trenton/Mercer County CoC,Largely Suburban CoC,,,448,324,245,79,68
 Troy/Rensselaer County CoC,Largely Suburban CoC,,,199,116,106,10,9
-Tucson/Pima County CoC,Major City CoC,x,,"1,372","1,015",654,361,345
+Tucson/Pima County CoC,Major City CoC,x,,1372,1015,654,361,345
 Tulsa City & County CoC,Major City CoC,,,1188,939,675,264,225
 "Turlock, Modesto/Stanislaus County CoC",Largely Suburban CoC,,,1923,1514,499,1015,260
 Tuscaloosa City & County CoC,Other Largely Urban CoC,,,44,27,27,0,0
