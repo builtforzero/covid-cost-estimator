@@ -66,24 +66,24 @@
                             <label for="dropdown" style="color: white">COMMUNITY</label>
                             <div class="helptext">Select your Community. If you can't remember your CoC's name, <a href="https://www.hudexchange.info/grantees/contacts/" target="_new" style="color: #ffd2e6;">look it up here</a>.</div>
                         </div>
-                        <div><select class="dropdown" name="Community" id="community-dropdown"
+                        <div><select class="input" name="Community" id="community-dropdown"
                                 value="Select a Community"></select></div>
 
                         <div>
                             <label for="input" style="color: white">MONTHS</label>
                             <div class="helptext">How many months would you like to model costs for?</div>
                         </div>
-                        <div><input class="input" name="Months" type="number" value="3" min="1" id="months-input"></div>
+                        <div><input class="form-input" name="Months" type="number" value="3" min="1" id="months-input"></div>
 
                         <div>
                             <label for="input" style="color: white;">HOMELESS INDIVIDUALS</label>
                             <div class="helptext">At least how many individuals are experiencing homelessness in your
-                                community?</div>
+                                community? In addition, consider inflow into homelessness here.</div>
                             <div id="datatext"></div>
                         </div>
                         <div><input style="margin: 0px;" class="input" name="Actively Homeless Number" type="number" min="1" value="1000"
                                 id="homeless-input"><br>
-                            <select class="dropdown" name="Population" id="population-dropdown"
+                            <select class="input" name="Population" id="population-dropdown"
                                 value="Select a population">
                                 <option>Select a population</option>
                                 <option>Individuals (All)</option>
@@ -98,7 +98,7 @@
                                 with Covid-19 at one time at the height of the pandemic? Nationally, based on UPenn
                                 research, we're estimating <b>40%</b> of the population will be infected at peak. </div>
                         </div>
-                        <div><span style="color: white"><input class="input" name="Percent Infected" step="any"
+                        <div><span style="color: white"><input class="form-input" name="Percent Infected" step="any"
                                     type="number" min="1" id="percentInfected-input" value="40">&nbsp %</span></div>
 
                         <div>
@@ -107,7 +107,7 @@
                                 Isolation Shelter? Nationally, based on UPenn
                                 research, we're estimating <b>$100.00</b> a night.</div>
                         </div>
-                        <div><span style="color: white">$ &nbsp<input class="input" name="Cost per Q&I Bed" step="any"
+                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per Q&I Bed" step="any"
                                     type="number" id="costPerBedQI-input" value="100"></span></div>
 
                         <div>
@@ -117,7 +117,7 @@
                                 estimates, we're estimating <b>$12,800</b>.
                             </div>
                         </div>
-                        <div><span style="color: white">$ &nbsp<input class="input" name="Cost per PP Bed" step="any"
+                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per PP Bed" step="any"
                                     type="number" id="costPerBedPP-input" value="12800"></span></div>
 
                     </div>
@@ -203,10 +203,21 @@
                 </div>
 
             </div>
+
         </div>
+
     </div>
 
     <hr style="margin: 30px 0px 5px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
+
+
+    <div id="button-wrapper">
+        <button type="submit" id="revise-button"><a href="#body-wrapper">Revise assumptions</a></button>
+    </div>
+
+    <div id="button-wrapper">
+        <a id="feedback-button" href="mailto:bfzdatasupport@community.solutions?subject=Cost%20Estimator%20Tool%20Feedback">Have feedback or questions? Need support? Email bfzdatasupport@community.solutions.</a>
+    </div>
 
     <!-- D3 script -->
     <script src="./lib/d3.js"></script>

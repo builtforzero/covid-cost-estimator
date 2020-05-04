@@ -115,17 +115,7 @@ label {
   margin: 10px 0px;
 }
 
-.dropdown {
-  width: 90%;
-  padding: 10px;
-  margin: 0px 0px 45px 0px;
-  border: 2px solid #a50a51;
-  font-family: "Raleway";
-  font-weight: 900;
-  font-size: 16px;
-}
-
-.input {
+input {
   width: 55%;
   padding: 10px;
   margin: 0px 0px 45px 0px;
@@ -133,17 +123,30 @@ label {
   font-family: "Raleway";
   font-weight: 900;
   font-size: 16px;
+  color: grey;
 }
 
-#community-dropdown {
-  width: 90%;
-}
-
-.input:hover {
+input:hover {
   border: 2px solid #ffd2e6;
 }
 
-.dropdown:hover {
+option {
+  color:black;
+}
+
+select {
+  width: 90%;
+  padding: 10px;
+  margin: 0px 0px 45px 0px;
+  border: 2px solid #a50a51;
+  font-family: "Raleway";
+  font-weight: 900;
+  font-size: 16px;
+  color: grey;
+}
+
+
+select:hover {
   cursor: pointer;
   border: 2px solid #ffd2e6;
 }
@@ -163,6 +166,40 @@ button:hover {
   background-color: white;
   color: #a50a51;
   cursor: pointer;
+}
+
+#revise-button {
+  width: 40%;
+  padding: 10px;
+  margin: 25px 0px;
+  background-color: grey;
+  font-size: 14px;
+}
+
+#revise-button > a {
+  color: white;
+  text-decoration: none;
+}
+
+#revise-button > a:hover {
+  color: lightgrey;
+  text-decoration: none;
+}
+
+
+#feedback-button {
+  background-color: white;
+  color: lightgrey;
+  font-size: 14px;
+  font-weight: 400;
+  width: 75%;
+  margin: 25px 0px 0px 0px;
+  vertical-align: bottom;
+  text-align: center;
+}
+
+#feedback-button:hover {
+  color: grey;
 }
 
 .topline {
@@ -266,8 +303,8 @@ button:hover {
     font-size: 12px;
   }
 
-  .input,
-  .dropdown {
+  input,
+  select {
     margin: 0px 0px 35px 0px;
   }
 

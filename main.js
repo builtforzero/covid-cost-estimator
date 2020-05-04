@@ -81,15 +81,11 @@ function recalculate() {
 // Check whether community and population are selected. If not, disable the submit button
 function buttonState() {
   if (
-    state.community === "Select a Community" ||
-    state.population === "Select a population"
+    state.community === "Select a Community" || state.population === "Select a population"
   ) {
     d3.select("#submit-button")
       .attr("disabled", "true")
-      .attr(
-        "style",
-        "background-color: rgb(211, 211, 211); border: 2px solid rgb(211, 211, 211); color: white;"
-      );
+      .attr("style", "background-color: rgb(211, 211, 211); border: 2px solid rgb(211, 211, 211); color: white;");
     d3.select(".warning-text").text(
       "Please select a community and population to continue."
     );
@@ -172,6 +168,7 @@ function app() {
     recalculate();
     buttonState();
     datatext();
+    d3.select("#community-dropdown").attr("style", "color:black;")
   });
 
   // Event listener on the months input
@@ -180,6 +177,7 @@ function app() {
       months: +this.value,
     });
     recalculate();
+    d3.select("#months-input").attr("style", "color:black;")
   });
 
 
@@ -193,6 +191,7 @@ function app() {
       homelessNumber: +this.value,
     });
     recalculate();
+    d3.select("#homeless-input").attr("style", "color:black; margin: 0px;")
   });
 
   // Event listener on the population dropdown
@@ -209,6 +208,7 @@ function app() {
       recalculate();
       buttonState();
       datatext();
+      d3.select("#population-dropdown").attr("style", "color:black;")
     });
 
   // Event listener on the percent infected input
@@ -220,6 +220,7 @@ function app() {
         percentInfected: +this.value / 100,
       });
       recalculate();
+      d3.select("#percentInfected-input").attr("style", "color:black;")
     });
 
   // Event listener on the QI Cost input
@@ -231,6 +232,7 @@ function app() {
         costPerBedQI: +this.value,
       });
       recalculate();
+      d3.select("#costPerBedQI-input").attr("style", "color:black;")
     });
 
   // Event listener on the PP Cost input
@@ -242,6 +244,7 @@ function app() {
         costPerBedPP: +this.value,
       });
       recalculate();
+      d3.select("#costPerBedPP-input").attr("style", "color:black;")
     });
 
 
