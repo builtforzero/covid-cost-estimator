@@ -127,7 +127,7 @@ function datatext() {
       suggested50: +d3.map(state.filteredData, d => Math.round(d.ind2019 * 0.4)).keys(),
     });
     d3.select("#datatext")
-      .text("Your 2019 PIT count reported " + state.suggestedInd + " individuals (adults + groups of adults + unaccompanied youth) experiencing homelessness.")
+      .text("Suggested: " + state.suggestedInd + " individuals, based on the number (adults + groups of adults + unaccompanied youth) reported in your 2019 PIT count.")
   } else if (state.community != "Select a Community" && state.population === "Chronically homeless individuals") {
     setGlobalState({
       suggestedInd: +d3.map(state.filteredData, d => d.ind2019).keys(),
@@ -135,7 +135,7 @@ function datatext() {
       suggested50: +d3.map(state.filteredData, d => Math.round(d.ind2019 * 0.4)).keys(),
     });
     d3.select("#datatext")
-      .text("Your 2019 PIT count reported " + state.suggestedChr + " individuals experiencing chronic homelessness. You may want to refer to your BNL.")
+      .text("Suggested: " + state.suggestedChr + " individuals, based on the number reported in your 2019 PIT count. You may want to refer to your BNL.")
   } else if (state.community != "Select a Community" && state.population === "Individuals 50+ years old") {
     setGlobalState({
       suggestedInd: +d3.map(state.filteredData, d => d.ind2019).keys(),
@@ -143,7 +143,7 @@ function datatext() {
       suggested50: +d3.map(state.filteredData, d => Math.round(d.ind2019 * 0.4)).keys(),
     });
     d3.select("#datatext")
-      .text("Nationally, based on HMIS estimates, we estimate that about 40% of the population is over 50. That number would be " + state.suggested50 + " individuals based on your 2019 PIT count.")
+      .text("Suggested: " + state.suggested50 + " individuals, based on national HMIS estimates that 40% of the population is over 50, and your 2019 PIT count.")
   }
 }
 
