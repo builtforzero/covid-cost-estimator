@@ -171,29 +171,6 @@ function app() {
     d3.select("#community-dropdown").attr("style", "color:black;")
   });
 
-  // Event listener on the months input
-  const MonthsInput = d3.select("#months-input").on("change", function () {
-    setGlobalState({
-      months: +this.value,
-    });
-    recalculate();
-    d3.select("#months-input").attr("style", "color:black;")
-  });
-
-
-  // Event listener on homeless individual input
-  const homelessInput = d3.select("#homeless-input").on("change", function () {
-    console.log(
-      "The new selected number of homeless individuals is",
-      this.value
-    );
-    setGlobalState({
-      homelessNumber: +this.value,
-    });
-    recalculate();
-    d3.select("#homeless-input").attr("style", "color:black; margin: 0px;")
-  });
-
   // Event listener on the population dropdown
   const populationInput = d3
     .select("#population-dropdown")
@@ -208,8 +185,30 @@ function app() {
       recalculate();
       buttonState();
       datatext();
-      d3.select("#population-dropdown").attr("style", "color:black;")
+      d3.select("#population-dropdown").attr("style", "color:black; margin: 0px;")
     });
+
+  // Event listener on homeless individual input
+  const homelessInput = d3.select("#homeless-input").on("change", function () {
+    console.log(
+      "The new selected number of homeless individuals is",
+      this.value
+    );
+    setGlobalState({
+      homelessNumber: +this.value,
+    });
+    recalculate();
+    d3.select("#homeless-input").attr("style", "color:black;")
+  });
+
+  // Event listener on the months input
+  const MonthsInput = d3.select("#months-input").on("change", function () {
+    setGlobalState({
+      months: +this.value,
+    });
+    recalculate();
+    d3.select("#months-input").attr("style", "color:black;")
+  });
 
   // Event listener on the percent infected input
   const InfectedInput = d3

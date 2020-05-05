@@ -19,6 +19,10 @@ h2 {
   font-weight: 800;
 }
 
+a {
+  color: #ffd2e6;
+}
+
 #title-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
