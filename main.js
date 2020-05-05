@@ -28,9 +28,6 @@ let state = {
   costTotal: 0, // Overall total cost
 };
 
-// Format large numbers with commas
-const format = d3.format(",.0");
-
 // Variables for script to submit data to Google Sheets
 const scriptURL =
   "https://script.google.com/macros/s/AKfycbzB4VKR9uSm83s0CFHUaMBUV611o4d24-NmQIfPFIhqFOh10qw/exec";
@@ -112,6 +109,7 @@ function submitData(scriptURL, form) {
   });
 }
 
+// Populate suggested homeless number field
 function datatext() {
   if (state.community === "Select a Community" || state.population === "Select a population") {
     d3.select("#datatext")
@@ -142,6 +140,8 @@ function datatext() {
       .text("Suggested: " + state.suggested50 + " individuals, based on national HMIS estimates that 40% of the population is over 50, and your 2019 PIT count.")
   }
 }
+
+
 
 /* APP */
 
