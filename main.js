@@ -198,7 +198,7 @@ function app() {
       homelessNumber: +this.value,
     });
     recalculate();
-    d3.select("#homeless-input").attr("style", "color:black;")
+    d3.select("#homeless-input").attr("style", "color:black;");
   });
 
   // Event listener on the months input
@@ -207,7 +207,7 @@ function app() {
       months: +this.value,
     });
     recalculate();
-    d3.select("#months-input").attr("style", "color:black;")
+    d3.select("#months-input").attr("style", "color:black;");
   });
 
   // Event listener on the percent infected input
@@ -219,7 +219,7 @@ function app() {
         percentInfected: +this.value / 100,
       });
       recalculate();
-      d3.select("#percentInfected-input").attr("style", "color:black;")
+      d3.select("#percentInfected-input").attr("style", "color:black;");
     });
 
   // Event listener on the QI Cost input
