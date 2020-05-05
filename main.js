@@ -253,7 +253,7 @@ function app() {
     console.log("clicked button");
 
     // Populate the dashboard and set the opacity of the values to 1
-    d3.select("#community-topline").text(state.community).attr("style", "color: black;");
+    d3.select("#community-topline").text(state.community).attr("style", "opacity: 1;");
     d3.select("#population-topline").text(formatNumber(state.homelessNumber) + " " + state.population.toLowerCase()).attr("style", "opacity: 1;");
     d3.select("#months-topline").text(state.months + " months (" + formatNumber((state.months * 30)) + " days)").attr("style", "opacity: 1;");
     d3.select("#infected-topline").text(state.percentInfected * 100 + "%").attr("style", "opacity: 1;");
