@@ -47,7 +47,7 @@
         </div>
 
     </div> -->
-<!-- 
+    <!-- 
     <hr style="margin: 0px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)"> -->
 
     <div id="body-wrapper">
@@ -55,8 +55,12 @@
 
             <div id="model">
                 <h2 style="color: #faaace">ASSUMPTIONS</h2>
-                <p class="helptext" style="color: white; font-size: 15px;">Enter your best guess for the values below. Then, press the <b>GO!</b> button to view your <b>Estimated Cost Report</b>.</p>
-                <p class="helptext" style="font-size: 11px;">Upon submission, your assumptions will be anonymously pulled into a national tracker accessible by our team. We will use this information to continually refine our support to communities, advocate nationally and enlist support from our network of partners. If you have questions or need support, contact bfzdatasupport@community.solutions!</p>
+                <p class="helptext" style="color: white; font-size: 15px;">Enter your best guess for the values below.
+                    Then, press the <b>GO!</b> button to view your <b>Estimated Cost Report</b>.</p>
+                <p class="helptext">Upon submission, your assumptions will be anonymously pulled into a national tracker
+                    accessible by our team. We will use this information to continually refine our support to
+                    communities, advocate nationally and enlist support from our network of partners. If you have
+                    questions or need support, contact bfzdatasupport@community.solutions!</p>
                 <br>
                 <br>
                 <form name="submitToGoogleSheet" id="form-input">
@@ -64,14 +68,17 @@
 
                         <div>
                             <label for="dropdown" style="color: white">COMMUNITY</label>
-                            <div class="helptext">Select your community. If you can't remember your CoC name, <a href="https://www.hudexchange.info/grantees/contacts/" target="_new" style="color: #ffd2e6;">look it up here</a>.</div>
+                            <div class="helptext">Select your community. If you can't remember your CoC name, <a
+                                    href="https://www.hudexchange.info/grantees/contacts/" target="_new"
+                                    style="color: #ffd2e6;">look it up here</a>.</div>
                         </div>
                         <div><select class="input" name="Community" id="community-dropdown"
                                 value="Select a Community"></select></div>
 
                         <div>
                             <label for="input" style="color: white;">HOMELESS INDIVIDUALS</label>
-                            <div class="helptext">At least how many individuals are experiencing homelessness in your community? We also suggest considering inflow into homelessness here.</div>
+                            <div class="helptext">At least how many individuals are experiencing homelessness in your
+                                community? We also suggest considering inflow into homelessness here.</div>
                             <div id="datatext"></div>
                         </div>
                         <div>
@@ -82,18 +89,25 @@
                                 <option>Chronically homeless individuals</option>
                                 <option>Individuals 50+ years old</option>
                             </select>
-                            <input class="input" name="Actively Homeless Number" type="number" min="1" value="1000" id="homeless-input"><br>
+                            <input class="input" name="Actively Homeless Number" type="number" min="1" value="1000"
+                                id="homeless-input"><br>
                         </div>
 
                         <div>
                             <label for="input" style="color: white">MONTHS</label>
-                            <div class="helptext">How many months would you like to model costs for? (Default: <b>3 months.</b>)</div>
+                            <div class="helptext">How many months would you like to model costs for? (Default: <b>3
+                                    months.</b>)</div>
                         </div>
-                        <div><input class="form-input" name="Months" type="number" value="3" min="1" id="months-input"></div>
+                        <div><input class="form-input" name="Months" type="number" value="3" min="1" id="months-input">
+                        </div>
 
                         <div>
                             <label for="input" style="color: white">PERCENT INFECTED</label>
-                            <div class="helptext">What percent of individuals experiencing homeless could be infected with Covid-19 at one time at the height of the pandemic? (Default: <b>40%</b>, based on a national <a href="https://community.solutions/wp-content/uploads/2020/04/COVID-paper_03272020.pdf" target="_new" style="color: #ffd2e6;">UPenn estimate</a>.)</div>
+                            <div class="helptext">What percent of individuals experiencing homeless could be infected
+                                with Covid-19 at one time at the height of the pandemic? (Default: <b>40%</b>, based on
+                                a national <a
+                                    href="https://community.solutions/wp-content/uploads/2020/04/COVID-paper_03272020.pdf"
+                                    target="_new" style="color: #ffd2e6;">UPenn estimate</a>.)</div>
                         </div>
                         <div><span style="color: white"><input class="form-input" name="Percent Infected" step="any"
                                     type="number" min="1" id="percentInfected-input" value="40">&nbsp %</span></div>
@@ -101,19 +115,24 @@
                         <div>
                             <label for="input" style="color: white">COST PER NIGHT FOR QUARANTINE & ISOLATION</label>
                             <div class="helptext">How much does it cost, per person, per night, to run a Quarantine &
-                                Isolation Shelter? (Default: <b>$100.00</b> per night, based on a national <a href="https://community.solutions/wp-content/uploads/2020/04/COVID-paper_03272020.pdf" target="_new" style="color: #ffd2e6;">UPenn estimate</a>.)</div>
+                                Isolation Shelter? (Default: <b>$100.00</b> per night, based on a national <a
+                                    href="https://community.solutions/wp-content/uploads/2020/04/COVID-paper_03272020.pdf"
+                                    target="_new" style="color: #ffd2e6;">UPenn estimate</a>.)</div>
                         </div>
-                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per Q&I Bed" step="any"
-                                    type="number" id="costPerBedQI-input" value="100"></span></div>
+                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per Q&I Bed"
+                                    step="any" type="number" id="costPerBedQI-input" value="100"></span></div>
 
                         <div>
                             <label for="input" style="color: white">COST PER YEAR FOR PERMANENT PLACEMENT</label>
                             <div class="helptext">How much does it cost per year to place (subsidy + services) an
-                                individual in permanent supportive housing? (Default: <b>$12,800</b>, based on a national <a href="https://endhomelessness.org/resource/ending-chronic-homelessness-saves-taxpayers-money-2/" target="_new" style="color: #ffd2e6;">NAEH estimate</a>).
+                                individual in permanent supportive housing? (Default: <b>$12,800</b>, based on a
+                                national <a
+                                    href="https://endhomelessness.org/resource/ending-chronic-homelessness-saves-taxpayers-money-2/"
+                                    target="_new" style="color: #ffd2e6;">NAEH estimate</a>).
                             </div>
                         </div>
-                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per PP Bed" step="any"
-                                    type="number" id="costPerBedPP-input" value="12800"></span></div>
+                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per PP Bed"
+                                    step="any" type="number" id="costPerBedPP-input" value="12800"></span></div>
 
                     </div>
                     <div id="button-wrapper">
@@ -196,21 +215,10 @@
                     </div>
                     <div class="topline-value" id="costPP-topline"></div>
                 </div>
-
+                
             </div>
-
         </div>
-
     </div>
-
-    <div id="footer">
-
-    <hr style="margin: 30px 0px 5px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
-
-    <div id="button-wrapper">
-        <a id="feedback-button" href="mailto:bfzdatasupport@community.solutions?subject=Cost%20Estimator%20Tool%20Feedback">Have feedback or questions? Need support? Email bfzdatasupport@community.solutions.</a>
-    </div>
-</div>
 
     <!-- D3 script -->
     <script src="./lib/d3.js"></script>
