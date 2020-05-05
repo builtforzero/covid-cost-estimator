@@ -253,18 +253,18 @@ function app() {
     console.log("clicked button");
 
     // Populate the dashboard
-    d3.select("#community-topline").text(state.community);
-    d3.select("#population-topline").text(formatNumber(state.homelessNumber) + " " + state.population.toLowerCase());
-    d3.select("#months-topline").text(state.months + " months (" + formatNumber((state.months * 30)) + " days)");
-    d3.select("#infected-topline").text(state.percentInfected * 100 + "%");
-    d3.select("#bedsTotal-topline").text(formatNumber(Math.round(state.bedsTotal)) + " beds");
-    d3.select("#costQI-topline").text("$" + formatNumber(Math.round(state.costQI, 2)));
-    d3.select("#costPP-topline").text("$" + formatNumber(Math.round(state.costPP, 2)));
+    d3.select("#community-topline").text(state.community).attr("style", "opacity: 1;");
+    d3.select("#population-topline").text(formatNumber(state.homelessNumber) + " " + state.population.toLowerCase()).attr("style", "opacity: 1;");
+    d3.select("#months-topline").text(state.months + " months (" + formatNumber((state.months * 30)) + " days)").attr("style", "opacity: 1;");
+    d3.select("#infected-topline").text(state.percentInfected * 100 + "%").attr("style", "opacity: 1;");
+    d3.select("#bedsTotal-topline").text(formatNumber(Math.round(state.bedsTotal)) + " beds").attr("style", "opacity: 1;");
+    d3.select("#costQI-topline").text("$" + formatNumber(Math.round(state.costQI, 2))).attr("style", "opacity: 1;");
+    d3.select("#costPP-topline").text("$" + formatNumber(Math.round(state.costPP, 2))).attr("style", "opacity: 1;");
 
     // Populate helptext calculations
-    d3.select("#beds-calc").text(formatNumber(state.homelessNumber) + " individuals × " + state.percentInfected * 100 + "% infected at peak");
-    d3.select("#costQI-calc").text(formatNumber(Math.round(state.bedsTotal)) + " beds × $" + formatNumber(state.costPerBedQI) + " per night × " + formatNumber((state.months * 30)) + " days");
-    d3.select("#costPP-calc").text(formatNumber(Math.round(state.bedsTotal)) + " beds × ( $" + formatNumber(state.costPerBedPP) + " per year / 365 days ) × " + formatNumber((state.months * 30)) + " days");
+    d3.select("#beds-calc").text(formatNumber(state.homelessNumber) + " individuals × " + state.percentInfected * 100 + "% infected at peak").attr("style", "opacity: 1;");
+    d3.select("#costQI-calc").text(formatNumber(Math.round(state.bedsTotal)) + " beds × $" + formatNumber(state.costPerBedQI) + " per night × " + formatNumber((state.months * 30)) + " days").attr("style", "opacity: 1;");
+    d3.select("#costPP-calc").text(formatNumber(Math.round(state.bedsTotal)) + " beds × ( $" + formatNumber(state.costPerBedPP) + " per year / 365 days ) × " + formatNumber((state.months * 30)) + " days").attr("style", "opacity: 1;");
   });
 
   // Submit form data to Google Sheets

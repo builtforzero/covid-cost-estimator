@@ -226,6 +226,7 @@ button:hover {
   font-size: 12px;
   padding: 0px 0px 10px 0px;
   color: #636467;
+  opacity: 0;
 }
 
 #button-wrapper {
@@ -240,8 +241,9 @@ button:hover {
   justify-content: left;
   font-weight: 800;
   font-size: 35px;
-  background-color: white;;
+  background-color: white;
   padding: 0px 0px 20px 0px;
+  opacity: 0;
 }
 
 #community-topline,
@@ -252,13 +254,7 @@ button:hover {
   background-color: white;;
   height: 1.1;
   width: 0.8;
-}
-
-#community-topline:hover,
-#population-topline:hover,
-#months-topline:hover,
-#infected-topline:hover {
-  color: #a50a51;
+  opacity: 0;
 }
 
 #footer {
