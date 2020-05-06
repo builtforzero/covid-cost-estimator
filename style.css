@@ -134,6 +134,10 @@ input:hover {
   border: 2px solid #ffd2e6;
 }
 
+#sourceQI-input, #sourcePP-input {
+  width: 85%;
+}
+
 option {
   color:black;
 }

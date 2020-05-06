@@ -26,6 +26,12 @@ let state = {
   costQI: 0, // Cost for all Q&I beds needed
   costPP: 0, // Cost for all Permanent Placement beds needed
   costTotal: 0, // Overall total cost
+
+  // Existing funds
+  existingQI: 0,
+  existingPP: 0,
+  sourceQI: null,
+  sourcePP: null,
 };
 
 // Variables for script to submit data to Google Sheets
@@ -69,8 +75,8 @@ function recalculate() {
   setGlobalState({
     filteredData: state.communityData.filter(d => d.communityName === state.community),
     bedsTotal: state.homelessNumber * state.percentInfected,
-    costQI: (state.homelessNumber * state.percentInfected) * state.costPerBedQI * (state.months * 30),
-    costPP: (state.homelessNumber * state.percentInfected) * (state.costPerBedPP / 365) * (state.months * 30),
+    costQI: ((state.homelessNumber * state.percentInfected) * state.costPerBedQI * (state.months * 30)) - state.existingQI,
+    costPP: Math.round(((state.homelessNumber * state.percentInfected) * (state.costPerBedPP / 365) * (state.months * 30)) - state.existingPP),
   });
   console.log("Recalculated State", state);
 }
@@ -247,6 +253,54 @@ function app() {
     });
 
 
+  // Event listener on the QI existing funding source
+  const sourceQIInput = d3
+    .select("#sourceQI-input")
+    .on("change", function () {
+      setGlobalState({
+        sourceQI: this.value,
+      });
+      recalculate();
+      d3.select("#sourceQI-input").attr("style", "color:black; margin: 0;")
+    });
+
+  // Event listener on the QI existing funding amount
+  const existingQIInput = d3
+    .select("#existingQI-input")
+    .on("change", function () {
+      setGlobalState({
+        existingQI: +this.value,
+      });
+      recalculate();
+      d3.select("#existingQI-input").attr("style", "color:black;")
+    });
+
+     // Event listener on the PP existing funding source
+  const sourcePPInput = d3
+  .select("#sourcePP-input")
+  .on("change", function () {
+    setGlobalState({
+      sourcePP: this.value,
+    });
+    recalculate();
+    d3.select("#sourcePP-input").attr("style", "color:black; margin: 0;")
+  });
+
+// Event listener on the PP existing funding amount
+const existingPPInput = d3
+  .select("#existingPP-input")
+  .on("change", function () {
+    setGlobalState({
+      existingPP: +this.value,
+    });
+    recalculate();
+    d3.select("#existingPP-input").attr("style", "color:black;")
+  });
+
+
+
+
+
   // Event listener on the submit button to populate results
   const submitButton = d3.select("#submit-button").on("click", function () {
     recalculate();
@@ -263,8 +317,8 @@ function app() {
 
     // Populate helptext calculations
     d3.select("#beds-calc").text(formatNumber(state.homelessNumber) + " individuals × " + state.percentInfected * 100 + "% infected at peak").attr("style", "opacity: 1;");
-    d3.select("#costQI-calc").text(formatNumber(Math.round(state.bedsTotal)) + " beds × $" + formatNumber(state.costPerBedQI) + " per night × " + formatNumber((state.months * 30)) + " days").attr("style", "opacity: 1;");
-    d3.select("#costPP-calc").text(formatNumber(Math.round(state.bedsTotal)) + " beds × ( $" + formatNumber(state.costPerBedPP) + " per year / 365 days ) × " + formatNumber((state.months * 30)) + " days").attr("style", "opacity: 1;");
+    d3.select("#costQI-calc").text("(" + formatNumber(Math.round(state.bedsTotal)) + " beds × $" + formatNumber(state.costPerBedQI) + " per night × " + formatNumber((state.months * 30)) + " days)" + " - $" + state.existingQI + " existing Q&I funds").attr("style", "opacity: 1;");
+    d3.select("#costPP-calc").text("(" + formatNumber(Math.round(state.bedsTotal)) + " beds × ( $" + formatNumber(state.costPerBedPP) + " per year / 365 days ) × " + formatNumber((state.months * 30)) + " days)" + " - $" + state.existingPP + " existing PP funds").attr("style", "opacity: 1;");
   });
 
   // Submit form data to Google Sheets

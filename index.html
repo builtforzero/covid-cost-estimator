@@ -14,42 +14,6 @@
 
 <body>
 
-    <!-- <div id="title-wrapper">
-        <div id="title">
-            <h1 style="color: #a50a51; font-size: 25px; line-height: 0px;">COVID-19</h1>
-            <h1 style="font-size: 35px; line-height: 32px;">COST ESTIMATOR TOOL</h1>
-            <div id="title-text">
-                <p>The Built for Zero team, in partnership with Kaiser Permanente</b>, has created a <i>Cost Estimator
-                        Tool</i> to support your strategic response to COVID-19.
-                </p>
-            </div>
-        </div>
-
-        <div id="description">
-            <div>
-                <p>Use this tool to estimate of the need and cost for:
-                    <ul>
-                        <li> Quarantine and Isolation (Q&I) units in the crisis response phase;</li>
-                        <li>Prioritized permanent housing placements for a high risk cohort before a potential second
-                            wave of infection in the fall/winter.</li>
-                </p>
-                </ul>
-            </div>
-            <div>
-                <p>For the following populations:
-                    <ul>
-                        <li>All individuals experiencing homelessness</li>
-                        <li>Individuals 50+ years of age</li>
-                        <li>Individuals experiencing chronic homelessness.</li>
-                    </ul>
-                </p>
-            </div>
-        </div>
-
-    </div> -->
-    <!-- 
-    <hr style="margin: 0px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)"> -->
-
     <div id="body-wrapper">
         <div id="col1">
 
@@ -123,17 +87,37 @@
 
                         <div>
                             <label for="input" style="color: white">COST PER YEAR FOR PERMANENT PLACEMENT</label>
-                            <div class="helptext">How much does it cost per year to place (subsidy + services) an
-                                individual in permanent supportive housing? (Default: <b>$12,800</b>, based on a
-                                national <a
-                                    href="https://endhomelessness.org/resource/ending-chronic-homelessness-saves-taxpayers-money-2/"
-                                    target="_new" style="color: #ffd2e6;">NAEH estimate</a>).
+                            <div class="helptext">How much does it cost per year to place (subsidy + services) an individual in permanent supportive housing? (Default: <b>$12,800</b>, based on a national <a href="https://endhomelessness.org/resource/ending-chronic-homelessness-saves-taxpayers-money-2/" target="_new" style="color: #ffd2e6;">NAEH estimate</a>).
                             </div>
                         </div>
-                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per PP Bed"
-                                    step="any" type="number" id="costPerBedPP-input" value="12800"></span></div>
+                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per PP Bed" step="any" type="number" id="costPerBedPP-input" value="12800"></span></div>
+
+                        <h2 style="color: white;">EXISTING FUNDS</h2>
+
+                        <div>
+                            <label for="input" style="color: white">FOR QUARANTING & ISOLATION</label>
+                            <div class="helptext">How much existing funding do you have, in total, to support a Quarantine and Isolation shelter?
+                            </div>
+                        </div>
+                        <div>
+                            <input style="margin: 0px;" class="input" name="Existing Q&I Funding Source" id="sourceQI-input" value="Name of Q&I funding source">
+                            <div><span style="color: white">$ &nbsp<input class="form-input" name="Existing Q&I Funding Amount" step="any" type="number" id="existingQI-input" value="0"></span></div>
+                        </div>
+
+                        <div>
+                            <label for="input" style="color: white">FOR PERMANENT PLACEMENT</label>
+                            <div class="helptext">How much existing funding do you have, in total, to support Permanent Supportive Housing placements?
+                            </div>
+                        </div>
+                        <div>
+                            <input style="margin: 0px;" class="input" name="Existing PP Funding Source" id="sourcePP-input" value="Name of PP funding source">
+                            <div><span style="color: white;">$ &nbsp<input class="form-input" name="Existing PP Funding Amount" step="any" type="number" id="existingPP-input" value="0"></span></div>
+                        </div>
+
 
                     </div>
+                    
+
                     <div id="button-wrapper">
                         <button type="submit" id="submit-button">GO!</button>
                         <div class="warning-text"></div>
