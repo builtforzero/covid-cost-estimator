@@ -30,8 +30,8 @@ let state = {
   // Existing funds
   existingQI: 0,
   existingPP: 0,
-  sourceQI: null,
-  sourcePP: null,
+  sourceQI: "Name of Q&I funding source",
+  sourcePP: "Name of PP funding source",
 };
 
 // Variables for script to submit data to Google Sheets
