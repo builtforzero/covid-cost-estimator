@@ -317,8 +317,8 @@ const existingPPInput = d3
 
     // Populate helptext calculations
     d3.select("#beds-calc").text(formatNumber(state.homelessNumber) + " individuals × " + state.percentInfected * 100 + "% infected at peak").attr("style", "opacity: 1;");
-    d3.select("#costQI-calc").text("(" + formatNumber(Math.round(state.bedsTotal)) + " beds × $" + formatNumber(state.costPerBedQI) + " per night × " + formatNumber((state.months * 30)) + " days)" + " - $" + state.existingQI + " existing Q&I funds").attr("style", "opacity: 1;");
-    d3.select("#costPP-calc").text("(" + formatNumber(Math.round(state.bedsTotal)) + " beds × ( $" + formatNumber(state.costPerBedPP) + " per year / 365 days ) × " + formatNumber((state.months * 30)) + " days)" + " - $" + state.existingPP + " existing PP funds").attr("style", "opacity: 1;");
+    d3.select("#costQI-calc").text("(" + formatNumber(Math.round(state.bedsTotal)) + " beds × $" + formatNumber(state.costPerBedQI) + " per night × " + formatNumber((state.months * 30)) + " days)" + " - $" + formatNumber(state.existingQI) + " existing Q&I funds").attr("style", "opacity: 1;");
+    d3.select("#costPP-calc").text("(" + formatNumber(Math.round(state.bedsTotal)) + " beds × ( $" + formatNumber(state.costPerBedPP) + " per year / 365 days ) × " + formatNumber((state.months * 30)) + " days)" + " - $" + formatNumber(state.existingPP) + " existing PP funds").attr("style", "opacity: 1;");
   });
 
   // Submit form data to Google Sheets
