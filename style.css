@@ -255,7 +255,7 @@ button:hover {
 #months-topline,
 #infected-topline {
   font-size: 18px;
-  background-color: white;;
+  background-color: white;
   height: 1.1;
   width: 0.8;
   opacity: 0;
@@ -272,7 +272,41 @@ button:hover {
   color: white;
 }
 
+.tooltip {
+  font-weight: 900;
+  font-size: 18px;
+}
 
+.axis {
+  font-family: "Raleway";
+  font-size: 18px;
+  color: rgb(139, 139, 139);
+}
+
+#chart1-title {
+  padding: 0px 0px 10px 0px;
+  font-weight: 900;
+  color: #a50a51;
+  font-size: 18px;
+  text-align: left;
+  background-color: white;
+  padding: 20px 0px 20px 0px;
+}
+
+#chart1-subtitle {
+  color: grey;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.fixed-tooltip, .fixed-tooltip-cost, .moving-tooltip {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+#chart1-viz {
+  opacity: 0;
+}
 
 
 @media only screen and (max-width: 750px) {

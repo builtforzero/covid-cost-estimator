@@ -1,3 +1,7 @@
+/* IMPORT CHART COMPONENT */
+import { Chart } from "./chart.js"
+let chart;
+
 /* VARIABLES & CONSTANTS */
 
 // Global application state
@@ -20,11 +24,11 @@ let state = {
   percentInfected: 0.4, // Percent infected by COVID-19
 
   // Calculated values
-  bedsTotal: 0, // Total beds needed
+  bedsTotal: 400, // Total beds needed
   bedsQI: 0, // Number of Q&I beds needed
   bedsPP: 0, // Number of Permanent Placement beds needed
-  costQI: 0, // Cost for all Q&I beds needed
-  costPP: 0, // Cost for all Permanent Placement beds needed
+  costQI: 3600000, // Cost for all Q&I beds needed
+  costPP: 1262466, // Cost for all Permanent Placement beds needed
   costTotal: 0, // Overall total cost
 
   // Existing funds
@@ -32,13 +36,17 @@ let state = {
   existingPP: 0,
   sourceQI: "Name of Q&I funding source",
   sourcePP: "Name of PP funding source",
+
+  // Data visualization
+  vizPercent: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+  chart1Data: [],
+
 };
 
 // Variables for script to submit data to Google Sheets
 const scriptURL =
   "https://script.google.com/macros/s/AKfycbzIx7Xp2G8KzVLKdPP-PDpVy6pegRsxnLPG2iZXxkPLO-HhfKM/exec";
 const form = document.forms["submitToGoogleSheet"];
-
 
 
 /* DATA SOURCE */
@@ -52,6 +60,8 @@ d3.csv("data/communityData.csv", d3.autoType).then(
     // Community name data for dropdown
     state.communityNames = d3.map(data, d => d.communityName).keys().sort();
     state.communityNames.unshift(["Select a Community"]);
+    // Create a new "chart" component
+    chart = new Chart(state, setGlobalState);
     // Call the app function
     app();
   });
@@ -69,6 +79,9 @@ function setGlobalState(nextState) {
     ...nextState,
   };
 }
+
+// Format numbers with commas (syntax: formatNumber(1000) = 1,000)
+let formatNumber = d3.format(",")
 
 // Recalculate state values
 function recalculate() {
@@ -154,8 +167,9 @@ function datatext() {
 function app() {
   buttonState(); // Check button state
 
-  // Format numbers with commas (syntax: formatNumber(1000) = 1,000)
-  let formatNumber = d3.format(",")
+  chart.draw(state, setGlobalState);
+
+  /* CALCULATOR */
 
   // Populate the community dropdown field with values from the CSV file
   let selectCommunity = d3
@@ -174,6 +188,7 @@ function app() {
     recalculate();
     buttonState();
     datatext();
+    chart.hideChart();
     d3.select("#community-dropdown").attr("style", "color:black;")
   });
 
@@ -191,6 +206,7 @@ function app() {
       recalculate();
       buttonState();
       datatext();
+      chart.hideChart();
       d3.select("#population-dropdown").attr("style", "color:black; margin: 0px;")
     });
 
@@ -204,6 +220,7 @@ function app() {
       homelessNumber: +this.value,
     });
     recalculate();
+    chart.hideChart();
     d3.select("#homeless-input").attr("style", "color:black;");
   });
 
@@ -213,6 +230,7 @@ function app() {
       months: +this.value,
     });
     recalculate();
+    chart.hideChart();
     d3.select("#months-input").attr("style", "color:black;");
   });
 
@@ -225,6 +243,7 @@ function app() {
         percentInfected: +this.value / 100,
       });
       recalculate();
+      chart.hideChart();
       d3.select("#percentInfected-input").attr("style", "color:black;");
     });
 
@@ -237,6 +256,7 @@ function app() {
         costPerBedQI: +this.value,
       });
       recalculate();
+      chart.hideChart();
       d3.select("#costPerBedQI-input").attr("style", "color:black;")
     });
 
@@ -249,6 +269,7 @@ function app() {
         costPerBedPP: +this.value,
       });
       recalculate();
+      chart.hideChart();
       d3.select("#costPerBedPP-input").attr("style", "color:black;")
     });
 
@@ -261,6 +282,7 @@ function app() {
         sourceQI: this.value,
       });
       recalculate();
+      chart.hideChart();
       d3.select("#sourceQI-input").attr("style", "color:black; margin: 0;")
     });
 
@@ -272,30 +294,33 @@ function app() {
         existingQI: +this.value,
       });
       recalculate();
+      chart.hideChart();
       d3.select("#existingQI-input").attr("style", "color:black;")
     });
 
-     // Event listener on the PP existing funding source
+  // Event listener on the PP existing funding source
   const sourcePPInput = d3
-  .select("#sourcePP-input")
-  .on("change", function () {
-    setGlobalState({
-      sourcePP: this.value,
+    .select("#sourcePP-input")
+    .on("change", function () {
+      setGlobalState({
+        sourcePP: this.value,
+      });
+      recalculate();
+      chart.hideChart();
+      d3.select("#sourcePP-input").attr("style", "color:black; margin: 0;")
     });
-    recalculate();
-    d3.select("#sourcePP-input").attr("style", "color:black; margin: 0;")
-  });
 
-// Event listener on the PP existing funding amount
-const existingPPInput = d3
-  .select("#existingPP-input")
-  .on("change", function () {
-    setGlobalState({
-      existingPP: +this.value,
+  // Event listener on the PP existing funding amount
+  const existingPPInput = d3
+    .select("#existingPP-input")
+    .on("change", function () {
+      setGlobalState({
+        existingPP: +this.value,
+      });
+      recalculate();
+      chart.hideChart();
+      d3.select("#existingPP-input").attr("style", "color:black;")
     });
-    recalculate();
-    d3.select("#existingPP-input").attr("style", "color:black;")
-  });
 
 
 
@@ -319,6 +344,10 @@ const existingPPInput = d3
     d3.select("#beds-calc").text(formatNumber(state.homelessNumber) + " individuals × " + state.percentInfected * 100 + "% infected at peak").attr("style", "opacity: 1;");
     d3.select("#costQI-calc").text("(" + formatNumber(Math.round(state.bedsTotal)) + " beds × $" + formatNumber(state.costPerBedQI) + " per night × " + formatNumber((state.months * 30)) + " days)" + " - $" + formatNumber(state.existingQI) + " existing Q&I funds").attr("style", "opacity: 1;");
     d3.select("#costPP-calc").text("(" + formatNumber(Math.round(state.bedsTotal)) + " beds × ( $" + formatNumber(state.costPerBedPP) + " per year / 365 days ) × " + formatNumber((state.months * 30)) + " days)" + " - $" + formatNumber(state.existingPP) + " existing PP funds").attr("style", "opacity: 1;");
+
+    // Make the graph visible
+    chart.draw(state, setGlobalState);
+    chart.displayChart();
   });
 
   // Submit form data to Google Sheets

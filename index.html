@@ -87,36 +87,49 @@
 
                         <div>
                             <label for="input" style="color: white">COST PER YEAR FOR PERMANENT PLACEMENT</label>
-                            <div class="helptext">How much does it cost per year to place (subsidy + services) an individual in permanent supportive housing? (Default: <b>$12,800</b>, based on a national <a href="https://endhomelessness.org/resource/ending-chronic-homelessness-saves-taxpayers-money-2/" target="_new" style="color: #ffd2e6;">NAEH estimate</a>).
+                            <div class="helptext">How much does it cost per year to place (subsidy + services) an
+                                individual in permanent supportive housing? (Default: <b>$12,800</b>, based on a
+                                national <a
+                                    href="https://endhomelessness.org/resource/ending-chronic-homelessness-saves-taxpayers-money-2/"
+                                    target="_new" style="color: #ffd2e6;">NAEH estimate</a>).
                             </div>
                         </div>
-                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per PP Bed" step="any" type="number" id="costPerBedPP-input" value="12800"></span></div>
+                        <div><span style="color: white">$ &nbsp<input class="form-input" name="Cost per PP Bed"
+                                    step="any" type="number" id="costPerBedPP-input" value="12800"></span></div>
 
                         <h2 style="color: white;">EXISTING FUNDS</h2>
 
                         <div>
                             <label for="input" style="color: white">FOR QUARANTINE & ISOLATION</label>
-                            <div class="helptext">How much existing funding do you have, in total, to support a Quarantine and Isolation shelter?
+                            <div class="helptext">How much existing funding do you have, in total, to support a
+                                Quarantine and Isolation shelter?
                             </div>
                         </div>
                         <div>
-                            <input style="margin: 0px;" class="input" name="Existing Q&I Funding Source" id="sourceQI-input" value="Name of Q&I funding source">
-                            <div><span style="color: white">$ &nbsp<input class="form-input" name="Existing Q&I Funding Amount" step="any" type="number" id="existingQI-input" value="0"></span></div>
+                            <input style="margin: 0px;" class="input" name="Existing Q&I Funding Source"
+                                id="sourceQI-input" value="Name of Q&I funding source">
+                            <div><span style="color: white">$ &nbsp<input class="form-input"
+                                        name="Existing Q&I Funding Amount" step="any" type="number"
+                                        id="existingQI-input" value="0"></span></div>
                         </div>
 
                         <div>
                             <label for="input" style="color: white">FOR PERMANENT PLACEMENT</label>
-                            <div class="helptext">How much existing funding do you have, in total, to support permanent supportive housing placements?
+                            <div class="helptext">How much existing funding do you have, in total, to support permanent
+                                supportive housing placements?
                             </div>
                         </div>
                         <div>
-                            <input style="margin: 0px;" class="input" name="Existing PP Funding Source" id="sourcePP-input" value="Name of PP funding source">
-                            <div><span style="color: white;">$ &nbsp<input class="form-input" name="Existing PP Funding Amount" step="any" type="number" id="existingPP-input" value="0"></span></div>
+                            <input style="margin: 0px;" class="input" name="Existing PP Funding Source"
+                                id="sourcePP-input" value="Name of PP funding source">
+                            <div><span style="color: white;">$ &nbsp<input class="form-input"
+                                        name="Existing PP Funding Amount" step="any" type="number" id="existingPP-input"
+                                        value="0"></span></div>
                         </div>
 
 
                     </div>
-                    
+
 
                     <div id="button-wrapper">
                         <button type="submit" id="submit-button">GO!</button>
@@ -198,7 +211,21 @@
                     </div>
                     <div class="topline-value" id="costPP-topline">VALUE</div>
                 </div>
-                
+
+                <hr style="margin: 15px 0px 15px 0px; height:2px; border-width:0;background-color:rgb(221, 221, 221)">
+
+                <div id="charts">
+                    <div id="chart1">
+                        <div id="chart1-title">ESTIMATED COST COMPARISON</div>
+                        <div id="chart1-subtitle">Based on your inputs, compare the <b>estimated cost</b> -- taking existing funds into account -- of providing all of the beds you need through <b>quarantine & isolation</b> vs. <b>permanent supportive housing</b>. 
+                            <br> 
+                            <br> 
+                        <b>Hover or click on dots</b> to see how your estimated cost changes based on the percentage of your population that may be infected at one time.</div>
+                        <br>
+                        <div id="chart1-viz"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
