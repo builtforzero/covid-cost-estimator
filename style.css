@@ -305,25 +305,20 @@ button:hover {
 }
 
 #chart1-viz {
-  opacity: 0;
+  opacity: 1;
 }
 
 
 @media only screen and (max-width: 750px) {
+
   #body-wrapper {
     margin: 1%;
     display: grid;
     grid-template-columns: 1fr;
   }
-/* 
-  #title-wrapper {
-    padding: 2% 5% 5% 5%;
-    display: grid;
-    grid-template-columns: 1fr;
-    column-gap: 2em;
-    position: static;
-    background-color: white;
-  } */
+
+
+
 
   #description {
     font-size: 12px;

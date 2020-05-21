@@ -25,7 +25,7 @@ class Chart {
         console.log("Setting up chart!")
     }
 
-    // Constructs the dataset
+    // Builds the dataset
     buildDataset(state, setGlobalState) {
 
         let i, j, bed, qi, pp;
@@ -195,7 +195,7 @@ class Chart {
             .style("opacity", 1);
 
 
-        // Cost of PPH line
+        // Cost of PSH line
         canvas.append("path")
             .datum(data)
             .attr("class", "line")
@@ -250,7 +250,7 @@ class Chart {
             .duration(200)
             .style("opacity", 1);
 
-        // Fixed tooltip: PP cost
+        // Fixed tooltip: PSH cost
         canvas
             .append("text")
             .attr("class", "fixed-tooltip-cost")
@@ -304,7 +304,7 @@ class Chart {
             .duration(200)
             .style("opacity", 1);
 
-        // PP Label
+        // PSH Label
         canvas
             .append("text")
             .attr("class", "fixed-tooltip-label")
@@ -316,14 +316,14 @@ class Chart {
             .attr("y", function () {
                 return yScale(d3.max(data, d => d.ppCost)) - 15;
             })
-            .text("PPH Cost")
+            .text("PSH Cost")
             .style("opacity", 0)
             .transition()
             .duration(200)
             .style("opacity", 1);
 
 
-        // Add PPH dots
+        // Add PSH dots
         canvas.selectAll(".dotPP")
             .data(data)
             .enter()
@@ -342,14 +342,17 @@ class Chart {
             })
             .on("mouseover", function (d, i) {
 
+                // Change dot
                 d3.selectAll("#" + this.id)
                     .attr("r", 6)
                     .style("cursor", "pointer")
                     .style("opacity", 1);
 
+                // Remove the original cost numbers
                 d3.selectAll(".fixed-tooltip-cost")
                     .style("opacity", 0);
 
+                // Add percent infected label
                 canvas
                     .append("text")
                     .attr("class", "moving-tooltip")
@@ -367,6 +370,7 @@ class Chart {
                     .duration(100)
                     .style("opacity", 1);
 
+                // Add PP cost label
                 canvas
                     .append("text")
                     .attr("class", "tooltip")
@@ -384,6 +388,7 @@ class Chart {
                     .duration(200)
                     .style("opacity", 1);
 
+                // Add QI cost label
                 canvas
                     .append("text")
                     .attr("class", "tooltip")
@@ -537,7 +542,7 @@ class Chart {
 
     }
 
-    // Updates the dataset and draws the line
+    // Builds the dataset and line using state values
     draw(state, setGlobalState) {
         console.log("Drawing chart!")
 
@@ -546,11 +551,13 @@ class Chart {
 
     }
 
+    // Sets opacity of chart to 1
     displayChart() {
         d3.select("#chart1-viz")
         .style("opacity", 1)
     }
 
+    // Sets opacity of chart to 0.3
     hideChart() {
         d3.select("#chart1-viz")
         .style("opacity", 0.3)
