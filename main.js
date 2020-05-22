@@ -167,6 +167,7 @@ function datatext() {
 function app() {
   buttonState(); // Check button state
 
+  chart.hideChart(0);
   chart.draw(state, setGlobalState);
 
   /* CALCULATOR */
@@ -188,7 +189,7 @@ function app() {
     recalculate();
     buttonState();
     datatext();
-    chart.hideChart();
+    chart.hideChart(0.3);
     d3.select("#community-dropdown").attr("style", "color:black;")
   });
 
@@ -206,7 +207,7 @@ function app() {
       recalculate();
       buttonState();
       datatext();
-      chart.hideChart();
+      chart.hideChart(0.3);
       d3.select("#population-dropdown").attr("style", "color:black; margin: 0px;")
     });
 
@@ -220,7 +221,7 @@ function app() {
       homelessNumber: +this.value,
     });
     recalculate();
-    chart.hideChart();
+    chart.hideChart(0.3);
     d3.select("#homeless-input").attr("style", "color:black;");
   });
 
@@ -230,7 +231,7 @@ function app() {
       months: +this.value,
     });
     recalculate();
-    chart.hideChart();
+    chart.hideChart(0.3);
     d3.select("#months-input").attr("style", "color:black;");
   });
 
@@ -243,7 +244,7 @@ function app() {
         percentInfected: +this.value / 100,
       });
       recalculate();
-      chart.hideChart();
+      chart.hideChart(0.3);
       d3.select("#percentInfected-input").attr("style", "color:black;");
     });
 
@@ -256,7 +257,7 @@ function app() {
         costPerBedQI: +this.value,
       });
       recalculate();
-      chart.hideChart();
+      chart.hideChart(0.3);
       d3.select("#costPerBedQI-input").attr("style", "color:black;")
     });
 
@@ -269,7 +270,7 @@ function app() {
         costPerBedPP: +this.value,
       });
       recalculate();
-      chart.hideChart();
+      chart.hideChart(0.3);
       d3.select("#costPerBedPP-input").attr("style", "color:black;")
     });
 
@@ -282,7 +283,7 @@ function app() {
         sourceQI: this.value,
       });
       recalculate();
-      chart.hideChart();
+      chart.hideChart(0.3);
       d3.select("#sourceQI-input").attr("style", "color:black; margin: 0;")
     });
 
@@ -294,7 +295,7 @@ function app() {
         existingQI: +this.value,
       });
       recalculate();
-      chart.hideChart();
+      chart.hideChart(0.3);
       d3.select("#existingQI-input").attr("style", "color:black;")
     });
 
@@ -306,7 +307,7 @@ function app() {
         sourcePP: this.value,
       });
       recalculate();
-      chart.hideChart();
+      chart.hideChart(0.3);
       d3.select("#sourcePP-input").attr("style", "color:black; margin: 0;")
     });
 
@@ -318,7 +319,7 @@ function app() {
         existingPP: +this.value,
       });
       recalculate();
-      chart.hideChart();
+      chart.hideChart(0.3);
       d3.select("#existingPP-input").attr("style", "color:black;")
     });
 

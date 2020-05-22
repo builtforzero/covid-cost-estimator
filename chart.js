@@ -558,9 +558,9 @@ class Chart {
     }
 
     // Sets opacity of chart to 0.3
-    hideChart() {
+    hideChart(opacity) {
         d3.select("#chart1-viz")
-        .style("opacity", 0.3)
+        .style("opacity", opacity)
     }
 }
 
